@@ -1,8 +1,11 @@
 #Ignore files in project
 
+
 #ignore everything in bin directory
-bin/*
-!bin/.gitkeep
+bin/
+
+#ignore hidden .vs folder
+.vs
 
 #ignore build directory folder except solution file and filter file
 build/*
