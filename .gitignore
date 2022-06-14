@@ -1,0 +1,9 @@
+#Ignore files in project
+
+#ignore verything in bin directory
+bin/*
+
+#ignore build directory folder except solution file and filter file
+build/*
+!system-analyzer-project.sln
+!system-analyzer-project.vcxproj
