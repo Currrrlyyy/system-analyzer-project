@@ -2,10 +2,10 @@
 
 
 #ignore everything in bin directory
-bin/*
+bin/
 
 #ignore hidden .vs folder
-.vs/*
+.vs/
 
 #ignore build directory folder except solution file, project file and filter file
 build/*
