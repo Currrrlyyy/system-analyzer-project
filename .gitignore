@@ -5,7 +5,7 @@
 bin/
 
 #ignore hidden .vs folder
-.vs
+.vs/
 
 #ignore build directory folder except solution file and filter file
 build/*
