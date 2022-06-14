@@ -1,10 +1,14 @@
 #Ignore files in project
 
+
 #ignore everything in bin directory
 bin/*
-!bin/.gitkeep
 
-#ignore build directory folder except solution file and filter file
+#ignore hidden .vs folder
+.vs/*
+
+#ignore build directory folder except solution file, project file and filter file
 build/*
-!system-analyzer-project.sln
-!system-analyzer-project.vcxproj
+!build/system-analyzer-project.sln
+!build/system-analyzer-project.vcxproj
+!build/system-analyzer-project.vcxproj.filters
