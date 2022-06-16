@@ -194,11 +194,12 @@ VOID ServiceStart(DWORD dwArgc, LPSTR* lpszArgv)
 		}
 
 		FILE* file = nullptr;
-		fopen_s(&file, "C: / log.txt", "a");
+		fopen_s(&file, "C:/log.txt", "a+");
 
 		if (file != nullptr)
 		{
 			fprintf_s(file, "Hello world\n");
+			fclose(file);
 		}
 
 		Sleep(3000);
