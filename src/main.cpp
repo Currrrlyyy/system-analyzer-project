@@ -5,107 +5,148 @@
 #include <filesystem>
 #include <optional>
 #include <stdexcept>
-
+#include <sstream>
+#include <thread>
 #include "json.hpp"
+#include < type_traits >
 
 
 using json = nlohmann::json;
 
 
+
 class ConfigData
 {
 public:
+    std::ostringstream oss;
 
     ConfigData()
     {
-        std::cout << "Begin!\n";
-
-            if(!ParseConfigFile())
-            {
-                throw std::runtime_error("Couldn't manage to parse configuration file");
-            }
-       
-        std::cout << "Parsed!\n";
-
-       // InitializeMembers(); 
-        std::cout << "Constructed!\n";
+        jf = default_j;
+        ParseConfigFile();
+        if (configExists)
+        {
+            CompareConfigFiles(default_j, jf);
+            CheckValuesValidity();
+        }
+        InitializeMembers();
+        LogServiceData();
     }
 
     int DiskFreeSpace()
     {
-        if(jf.contains("diskFreeSpace"))
-        {
-            return jf["diskFreeSpace"];
-        }
-        return default_j["diskFreeSpace"];  
+        return jf[paramDiskFreeSpace];
     }
 
     int CpuLoad()
     {
-        if(jf.contains("cpuLoad"))
-        {
-            return jf["cpuLoad"];
-        }
-        return default_j["cpuLoad"];    
+        return jf[paramCpuLoad];
     }
 
     bool HasInternetConnection()
     {
-        if(jf.contains("hasInternetConnection"))
-        {
-            return jf["hasInternetConnection"];
-        }
-        return default_j["hasInternetConnection"];  
+        return jf[paramInternetConnection];
     }
 
     std::string ServiceName()
     {
-        if(jf.contains("serviceName"))
-        {
-            return jf["serviceName"];
-        }
-        return default_j["serviceName"];
+        return jf[paramServiceName];
     }
 
-    void ShowLogData()
+    void LogServiceData()
     {
-        std::cout << "Service name: " << ServiceName() << "\n";
-        std::cout << "Free disk space: " << DiskFreeSpace() << "%\n";
-        std::cout << "Cpu loaded: " << CpuLoad() << "%\n";
-        std::cout << "Internet connection available: " << HasInternetConnection() << "\n";
+        oss << " >> Service parameters:\n";
+        oss << "\tService name: " << ServiceName() << "\n";
+        oss << "\tFree disk space: " << DiskFreeSpace() << "%\n";
+        oss << "\tCpu loaded: " << CpuLoad() << "%\n";
+        oss << "\tInternet connection available: " << HasInternetConnection() << "\n";
     }
+
 private:
-    bool ParseConfigFile()
+    void ParseConfigFile()
     {
-        bool configExists = std::filesystem::exists(configFileName);
-        if(!configExists)
+        configExists = std::filesystem::exists(configFileName);
+        std::ifstream ifs;
+
+        if (!configExists)
         {
-            std::cout << "Config doesn't exist!\n";
-            std::cout << "Using default values!\n";
-            jf = default_j;
+            oss << " >> User config doesn't exist.\n";
+            oss << " >> Service will use default values.\n";
+            return;
         }
-        else 
+
+        oss << " >> User config exists.\n";
+        ifs.open(configFileName);
+        if (!ifs.is_open())
         {
-            std::ifstream ifs(configFileName);
-            std::cout << "Config exists!\n";       
-            try 
+            oss << "\tError while trying to open user config.\n";
+            oss << " >> Service will use default values.\n";
+            return;
+        }
+
+        try
+        {
+            oss << " >> Trying to parse user config.\n";
+            jf = json::parse(ifs);
+            oss << " >> Successfully parsed user config.\n";
+        }
+        catch (json::parse_error& ex)
+        {
+            oss << "\tError while trying to parse user config.\n";
+            oss << "\t" << ex.what() << "\n";
+            oss << " >> Service will use default values.\n";
+        }
+    }
+
+    void CompareConfigFiles(const json& defaultConfig, json& userConfig)
+    {
+        bool isFound = false;
+        for (auto user_it = userConfig.begin(); user_it != userConfig.end();)
+        {
+            isFound = false;
+            for (auto def_it = defaultConfig.begin(); def_it != defaultConfig.end(); def_it++)
             {
-                jf = json::parse(ifs);
-            } 
-            catch (json::parse_error& ex)
+                if (def_it.key() == user_it.key())
+                {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (!isFound)
             {
-                std::cerr << ex.what() << "\n";
+                oss << " >> Found a custom parameter in config that won't be used: " << user_it.key() << ", " << user_it.value() << std::endl;
+                userConfig.erase(user_it++);
+
+            }
+            else
+            {
+                ++user_it;
             }
         }
-        return true;    
-    } 
+    }
+
+    void CheckValuesValidity()
+    {
+
+        oss << " >> Checking for validity of value types in user config.\n";
+
+        for (const auto& user_el : jf.items())
+        {
+            if (user_el.value().type() != default_j[user_el.key()].type())
+            {
+                oss << "\tParameter has incorrect type of value: " << user_el.key() << ", " << user_el.value() << "; Using default value instead\n";
+                user_el.value() = default_j[user_el.key()];
+            }
+
+        }
+    }
 
     void InitializeMembers()
     {
-        serviceName = jf["serviceName"];
-        diskFreeSpace = jf["diskFreeSpace"];
-        cpuLoad = jf["cpuLoad"];
-        hasInternetConnection = jf["hasInternetConnection"];
+        serviceName = (jf.contains(paramServiceName)) ? jf[paramServiceName] : default_j[paramServiceName];
+        cpuLoad = (jf.contains(paramCpuLoad)) ? jf[paramCpuLoad] : default_j[paramCpuLoad];
+        diskFreeSpace = (jf.contains(paramDiskFreeSpace)) ? jf[paramDiskFreeSpace] : default_j[paramServiceName];
+        hasInternetConnection = (jf.contains(paramInternetConnection)) ? jf[paramInternetConnection] : default_j[paramInternetConnection];
     }
 
 private:
@@ -116,27 +157,29 @@ private:
     int diskFreeSpace;
     int cpuLoad;
     bool hasInternetConnection;
+    bool configExists;
+
+
+private:
+    const std::string paramServiceName = "serviceName";
+    const std::string paramDiskFreeSpace = "diskFreeSpace";
+    const std::string paramCpuLoad = "cpuLoad";
+    const std::string paramInternetConnection = "hasInternetConnection";
+
+
 };
 
-const json ConfigData::default_j = {  
+const json ConfigData::default_j = {
         {"serviceName", "JesusIncService"},
-        {"diskFreeSpace", 90},
+        {"diskFreeSpace", 90U},
         {"hasInternetConnection", true},
-        {"cpuLoad", 40}
-    };
+        {"cpuLoad", 40U}
+};
+
 
 
 int main()
 {
-    
-    try
-    {
-        ConfigData myData;
-        std::cout << "Service name: ";
-        myData.ShowLogData();
-    }
-    catch (const std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    ConfigData myData;
+    std::cout << myData.oss.str();
 }
