@@ -7,5 +7,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <thread>
-#include "json_parser.hpp"
 #include <type_traits>
+#include "json_parser.hpp"
+#include "config_parser.h"
+

@@ -1,8 +1,6 @@
 #include "stdafx.h"
 
-using json = nlohmann::json;
-
-class ÑConfigParser
+/*class ÑConfigParser
 {
 public:
     
@@ -181,9 +179,10 @@ const std::string ÑConfigParser::s_csParamCpuLoad = "cpuLoad";
 const std::string ÑConfigParser::s_csParamInternetConnection = "hasInternetConnection";
 
 
+*/
 
 int main()
 {
-    ÑConfigParser myData;
+    CConfigParser myData;
     std::cout << myData.GetLogData();
 }
