@@ -1,3 +1,5 @@
+#pragma once
+
 #include <chrono>
 #include <ctime>
 #include <fstream>
@@ -8,3 +10,5 @@
 #include <sstream>
 #include <string>
 #include <thread>
+
+#pragma warning(disable : 4996)
