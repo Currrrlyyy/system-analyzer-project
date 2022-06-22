@@ -1,3 +1,7 @@
 {
-	"service_name": "JesusIncService"
+    "cpuLoad": 70,
+    "diskFreeSpace": 50,
+    "hasInternetConnection": false,
+    "serviceName": "Cucumbrella",
+    "srakaDupa": null
 }
