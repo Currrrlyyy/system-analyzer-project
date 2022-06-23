@@ -19,3 +19,5 @@
 #include <sstream>
 #include <thread>
 
+// InternetConncetionStatus includes
+#include <atomic>

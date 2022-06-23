@@ -1,13 +1,23 @@
 #include "stdafx.h"
-#include "config_parser.h"
 #include "logger.h"
+#include "config_parser.h"
+#include "internet_connection_status.h"
 
 int main()
 {
-	CConfigParser myConfig;
 	CLogger::Init("../log.txt");
 
-	LOG() << "START \n";
-	LOG() << "\n" << myConfig.GetLogData();
-	LOG() << "END \n\n";
+	LOG() << "START";
+	
+	CConfigParser myConfig;
+	LOG() << "Parse config file\n" << myConfig.GetLogData();
+
+	{
+		CInternetConnectionStatus internetConncetionStatus;
+		internetConncetionStatus.Start();
+		std::cin.get();
+		internetConncetionStatus.Stop();
+	}
+
+	LOG() << "END\n\n";
 }

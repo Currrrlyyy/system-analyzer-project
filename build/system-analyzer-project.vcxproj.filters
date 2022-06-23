@@ -8,6 +8,9 @@
     <ClCompile Include="..\src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <Filter Include="src\win32">
+      <UniqueIdentifier>{6de7d247-4daa-43d7-ad72-50a6cf790229}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\stdafx.cpp">
@@ -17,7 +20,13 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\logger.cpp">
-    <Filter>src</Filter>
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win32\utils.cpp">
+      <Filter>src\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\internet_connection_status.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -26,8 +35,17 @@
     </ClInclude>
     <ClInclude Include="..\src\config_parser.h">
       <Filter>src</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="..\src\logger.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\win32\utils.h">
+      <Filter>src\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\internet_connection_status.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\utils.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
