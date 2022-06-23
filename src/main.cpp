@@ -1,13 +1,13 @@
 #include "stdafx.h"
-#include "logger.h"
 #include "config_parser.h"
+#include "logger.h"
+
 int main()
 {
+	CConfigParser myConfig;
 	CLogger::Init("../log.txt");
-	CConfigParser myData;
-	LOG() << "Start.\n" ;
-	LOG() << "\n" << myData.GetLogData();
-	LOG() << "End.\n\n";
 
-	return 0;
+	LOG() << "START \n";
+	LOG() << "\n" << myConfig.GetLogData();
+	LOG() << "END \n\n";
 }
