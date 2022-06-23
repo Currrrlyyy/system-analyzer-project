@@ -29,3 +29,20 @@
 [2022-06-23 13:26:25] END 
 
 
+[2022-06-23 13:37:50] START 
+
+[2022-06-23 13:37:50] 
+ >> User config exists.
+ >> Trying to parse user config.
+ >> Successfully parsed user config.
+	Found a custom parameter in config that won't be used: srakaDupa, null
+ >> Checking for validity of value types in user config.
+ >> Service parameters:
+	Service name: Cucumbrella
+	Free disk space: 50
+	Cpu loaded: 70
+	Internet connection available: 0
+
+[2022-06-23 13:37:50] END 
+
+
