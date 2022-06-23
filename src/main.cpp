@@ -2,6 +2,5 @@
 
 int main()
 {
-    CConfigParser myData;
-    std::cout << myData.GetLogData();
+	return 0;
 }

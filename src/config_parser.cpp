@@ -1,5 +1,5 @@
-#include "config_parser.h"
 #include "stdafx.h"
+#include "config_parser.h"
 
 CConfigParser::CConfigParser()
 {
