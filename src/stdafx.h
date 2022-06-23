@@ -19,4 +19,3 @@
 #include <sstream>
 #include <thread>
 
-#pragma warning(disable : 4996)

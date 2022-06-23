@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "logger.h"
 
+#pragma warning(disable : 4996)
+
 std::optional<std::string> CLogger::s_sLogFileName = std::nullopt;
 std::mutex CLogger::s_Mutex;
 
