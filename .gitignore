@@ -9,7 +9,6 @@ bin/
 
 #ignore build directory folder except solution file, project file and filter file
 build/*
-!build/json_parser.props
 !build/system-analyzer-project.sln
 !build/system-analyzer-project.vcxproj
 !build/system-analyzer-project.vcxproj.filters

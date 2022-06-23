@@ -13,7 +13,6 @@
     <ClCompile Include="..\src\stdafx.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\config_parser.cpp">
     <ClCompile Include="..\src\logger.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -22,7 +21,6 @@
     <ClInclude Include="..\src\stdafx.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\config_parser.h">
     <ClInclude Include="..\src\logger.h">
       <Filter>src</Filter>
     </ClInclude>
