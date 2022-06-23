@@ -25,6 +25,8 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\config_parser.h">
+      <Filter>src</Filter>
+	</ClInclude>
     <ClInclude Include="..\src\logger.h">
       <Filter>src</Filter>
     </ClInclude>
