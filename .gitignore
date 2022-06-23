@@ -1,7 +1,7 @@
 #Ignore files in project
 
 #Ignore log file
-log.txt
+/log.txt
 
 #ignore everything in bin directory
 bin/
