@@ -1,23 +1,22 @@
 #pragma once
 
-#include "utils.h"
-
 class CInternetConnectionStatus
 {
 public:
 	CInternetConnectionStatus();
 
-	void Start();
-	
-	void Stop();
-
 	~CInternetConnectionStatus();
 
+	void Start();
+	
+	void StopAndWait();
+
 private:
-	void Execute();
+	void Execute(std::future<void> shouldStop);
 
 private:
 	std::thread m_Thread;
-	std::atomic<bool> m_bStoped;
-	InternetStatus m_LastStatus;
+	std::promise<void> m_StopPromise;
+	bool m_bIsRunning;
+	bool m_bLastInternetConnection;
 };

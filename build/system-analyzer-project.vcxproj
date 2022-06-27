@@ -112,7 +112,6 @@
     <ClInclude Include="..\src\logger.h" />
     <ClInclude Include="..\src\stdafx.h" />
     <ClInclude Include="..\src\utils.h" />
-    <ClInclude Include="..\src\win32\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

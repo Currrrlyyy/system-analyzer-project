@@ -1,15 +1,10 @@
 #include "stdafx.h"
-#include "win32/utils.h"
+#include "utils.h"
 
-#include <Windows.h>
-#include <WinInet.h>
-
-
-InternetStatus GetInternetConnectionStatus()
+namespace utils
 {
-	if (!InternetCheckConnection("http://www.google.com", FLAG_ICC_FORCE_CONNECTION, 0))
+	bool IsConnectedToInternet()
 	{
-		return InternetStatus::OFFLINE;
+		return InternetCheckConnection("http://www.google.com", FLAG_ICC_FORCE_CONNECTION, 0);
 	}
-	return InternetStatus::ONLINE;
-}
+} // namespace utils
