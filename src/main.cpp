@@ -9,8 +9,7 @@ int main()
 
 	myConfig.ParseConfigFile(oss);
 	fullLogName = myConfig.GetLogPath() + myConfig.GetLogName();
-
+	
 	std::cout << oss.str();
-
 	std::cin.get();
 }
