@@ -3,7 +3,7 @@
 #include "logger.h"
 #include "internet_connection_status.h"
 
-static const std::string g_csServiceName = "SystemAnalizer";
+static const std::string g_csServiceName = "SystemAnalyzer";
 
 VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv);
 VOID WINAPI ServiceCtrlHandler(DWORD dwControl);
@@ -129,7 +129,7 @@ void CService::Uninstall()
 VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv)
 {
 	g_hServiceStatus = RegisterServiceCtrlHandler(g_csServiceName.c_str(), ServiceCtrlHandler);
-	if (g_hServiceStatus == nullptr)
+	if (!g_hServiceStatus)
 	{
 		return;
 	}
@@ -150,10 +150,7 @@ VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv)
 
 	SetServiceStatus(SERVICE_RUNNING);
 
-	while (shouldStop.wait_for(std::chrono::milliseconds(500)) == std::future_status::timeout)
-	{
-	}
-
+	shouldStop.wait();
 
 	internetConnectionStatus.StopAndWait();
 

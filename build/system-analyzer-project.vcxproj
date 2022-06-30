@@ -55,7 +55,6 @@
     <OutDir>$(SolutionDir)..\bin\$(PlatformShortName)\$(Configuration)</OutDir>
     <IntDir>$(SolutionDir)..\bin\$(BaseIntermediateOutputPath)\$(PlatformShortName)\$(Configuration)</IntDir>
   </PropertyGroup>
-<<<<<<< HEAD
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -88,8 +87,6 @@
       <AdditionalLibraryDirectories>E:\ELEKS\VS Project\system-analyzer-project\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
-=======
->>>>>>> main
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -97,12 +94,9 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)..\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-<<<<<<< HEAD
-=======
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
->>>>>>> main
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
