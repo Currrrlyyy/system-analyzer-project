@@ -19,3 +19,11 @@
 #include <sstream>
 #include <thread>
 
+// InternetConncetionStatus includes
+#include <atomic>
+#include <future>
+
+#ifdef _WIN32
+	#include <Windows.h>
+	#include <WinInet.h>
+#endif // _WIN32
