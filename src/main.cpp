@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <cstdio>
 
 #include <Windows.h>
@@ -33,10 +34,31 @@ INT main(INT iArgc, LPSTR lpszArgv[])
 		else
 		{
 			printf_s("Unknown command");
+=======
+#include "stdafx.h"
+#include "service.h"
+
+int main(int argc, char* argv[])
+{
+	if (argc > 1)
+	{
+		if (argv[1] == std::string("/install"))
+		{
+			CService::Install();
+		}
+		else if (argv[1] == std::string("/uninstall"))
+		{
+			CService::Uninstall();
+		}
+		else
+		{
+			std::cout << "Unknown command!" << std::endl;;
+>>>>>>> main
 		}
 		return 0;
 	}
 
+<<<<<<< HEAD
 	SERVICE_TABLE_ENTRY serviceTableEntry[] =
 	{
 		{ const_cast<LPSTR>(SERVICE_NAME), ServiceMain },
@@ -221,3 +243,11 @@ VOID WINAPI ServiceCtrlHandler(DWORD dwControl)
 		break;
 	}
 }
+=======
+	if (!CService::Run())
+	{
+		std::cout << "Can not run service application as console application" << std::endl;
+	}
+	return 0;
+}
+>>>>>>> main
