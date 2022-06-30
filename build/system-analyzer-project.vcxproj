@@ -104,12 +104,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\src\win32\service.cpp" />
     <ClCompile Include="..\src\win32\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\config_parser.h" />
     <ClInclude Include="..\src\internet_connection_status.h" />
     <ClInclude Include="..\src\logger.h" />
+    <ClInclude Include="..\src\service.h" />
     <ClInclude Include="..\src\stdafx.h" />
     <ClInclude Include="..\src\utils.h" />
   </ItemGroup>
