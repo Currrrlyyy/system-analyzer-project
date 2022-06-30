@@ -8,5 +8,7 @@ int main()
 {
 	CDiskStatus diskStatus;
 	diskStatus.GetDrivesList();
-	diskStatus.LogDiskData();
+	diskStatus.Start();
+	std::cin.get();
+	diskStatus.StopAndWait();
 }

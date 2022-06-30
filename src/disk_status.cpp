@@ -1,6 +1,53 @@
 #include "stdafx.h"
 #include "disk_status.h"
+#include "logger.h"
+#include <iostream>
 
+const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::seconds(5);
+
+CDiskStatus::CDiskStatus():
+    m_bIsRunning(false),
+    m_bLastDiskSpace(false)
+{}
+
+CDiskStatus::~CDiskStatus()
+{
+    StopAndWait();
+}
+
+void CDiskStatus::Start()
+{
+    if (m_bIsRunning)
+    {
+        return;
+    }
+    m_bIsRunning = true;
+    m_StopPromise = std::promise<void>();
+    m_Thread = std::thread(&CDiskStatus::Execute, this, m_StopPromise.get_future());
+}
+
+void CDiskStatus::StopAndWait()
+{
+    if (!m_bIsRunning)
+    {
+        return;
+    }
+    m_StopPromise.set_value();
+    m_Thread.join();
+    m_bIsRunning = false;
+}
+
+void CDiskStatus::Execute(std::future<void> shouldStop)
+{
+    std::cout << "CDiskStatus started\n";
+    while (shouldStop.wait_for(g_cDiskStatus_CheckDelay) == std::future_status::timeout)
+    {
+        LogDiskData();
+        std::cout << std::endl;
+    }
+
+    std::cout << "CDiskStatus stopped";
+}
 
 std::optional<int> CDiskStatus::FindDiskNumber(wchar_t* drivesList)
 {
