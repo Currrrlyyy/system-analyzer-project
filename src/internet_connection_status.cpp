@@ -3,6 +3,8 @@
 #include "utils.h"
 #include "logger.h"
 
+const std::chrono::duration g_cInternetStatus_CheckDelay = std::chrono::minutes(1);
+
 CInternetConnectionStatus::CInternetConnectionStatus()
 	: m_bIsRunning(false)
 	, m_bLastInternetConnection(false)
@@ -38,13 +40,11 @@ void CInternetConnectionStatus::StopAndWait()
 
 void CInternetConnectionStatus::Execute(std::future<void> shouldStop)
 {
-	using std::chrono_literals::operator""s;
-
 	LOG() << "CInternetConnectionStatus started";
 
-	while (shouldStop.wait_for(1s) == std::future_status::timeout)
+	while (shouldStop.wait_for(g_cInternetStatus_CheckDelay) == std::future_status::timeout)
 	{
-		bool bInternetConnection = utils::IsConnectedToInternet();
+		const bool bInternetConnection = utils::IsConnectedToInternet();
 		if (bInternetConnection != m_bLastInternetConnection)
 		{
 			if (m_bLastInternetConnection)
