@@ -10,26 +10,28 @@ public:
 public:
 	CLogger();
 
-	CLogger& AsLValue();
-
 	~CLogger();
 
+	CLogger& AsLValue();
+
 	template<class T>
-	friend CLogger& operator<<(CLogger& lh, const T& cValue)
+	friend CLogger& operator<<(CLogger& logger, const T& cValue)
 	{
-		lh.m_oss << cValue;
-		return lh;
+		logger.m_Buffer << cValue;
+		return logger;
 	}
 
 private:
 	void AddTimestamp();
 
+	void AddAccountName();
+
 private:
-	static std::optional<std::string> s_sLogFileName;
+	static std::optional<std::string> s_LogFileName;
 	static std::mutex s_Mutex;
 
 private:
-	std::ostringstream m_oss;
+	std::ostringstream m_Buffer;
 };
 
 #define LOG() CLogger().AsLValue()

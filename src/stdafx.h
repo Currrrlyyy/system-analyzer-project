@@ -23,7 +23,9 @@
 #include <atomic>
 #include <future>
 
+// Utils includes
 #ifdef _WIN32
 	#include <Windows.h>
 	#include <WinInet.h>
+	#include <Lmcons.h>
 #endif // _WIN32
