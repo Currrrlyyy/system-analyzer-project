@@ -3,6 +3,7 @@
 //Config parser includes
 #include <filesystem>
 #include "nlohmann_json_parser/json_parser.hpp"
+#include <iostream>
 
 //Logger includes
 #include <chrono>
