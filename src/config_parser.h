@@ -7,12 +7,10 @@ class CConfigParser
 {
 public:
 	CConfigParser();
-	//int GetDiskFreeSpace();
-	//int GetCpuLoad();
-	//bool GetHasInternetConnection();
 	std::string GetLogPath();
 	std::string GetLogName();
 	std::string GetServiceName();
+	int GetMinimalDeltaMB();
 	void ParseConfigFile(std::ostringstream& oss);
 
 private:
@@ -24,8 +22,8 @@ private:
 	std::string m_sServiceName;
 	std::string m_sLogPath;
 	std::string m_sLogName;
-	//int m_iDiskFreeSpace;
-	//int m_iCpuLoad;
-	//bool m_bHasInternetConnection;
+	int m_iDiskFreeSpace;
+	unsigned m_iMinimalDeltaMB;
+	
 
 };

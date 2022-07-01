@@ -3,40 +3,27 @@
 
 const static json s_cDefaultJson = {
         {"serviceName", "JesusIncService"},
-        {"diskFreeSpace", 90U},
-        {"hasInternetConnection", true},
+        {"minimalDiskSpaceDelta", 50},
         {"logPath", "../"},
-        {"logName", "log.txt"},
-        {"cpuLoad", 40U}
+        {"logName", "log.txt"}
 };
 const static std::string s_csConfigFileName = "../config/config.json";
 const static std::string s_csParamServiceName = "serviceName";
 const static std::string s_csParamLogPath = "logPath";
 const static std::string s_csParamLogName = "logName";
 
-//const static std::string s_csParamDiskFreeSpace = "diskFreeSpace";
-//const static std::string s_csParamCpuLoad = "cpuLoad";
-//const static std::string s_csParamInternetConnection = "hasInternetConnection";
+const static std::string s_csParamMinimalDelta = "minimalDiskSpaceDelta";
+
 
 CConfigParser::CConfigParser()
 {
     m_UserJson = s_cDefaultJson;
 }
 
-//int CConfigParser::GetDiskFreeSpace()
-//{
-//    return m_iDiskFreeSpace;
-//}
-
-//int CConfigParser::GetCpuLoad()
-//{
-//    return m_iCpuLoad;
-//}
-
-//bool CConfigParser::GetHasInternetConnection()
-//{
-//    return m_bHasInternetConnection;
-//}
+int CConfigParser::GetMinimalDeltaMB()
+{
+    return m_iMinimalDeltaMB;
+}
 
 std::string CConfigParser::GetServiceName()
 {
@@ -151,7 +138,5 @@ void CConfigParser::InitializeMembers()
     m_sLogPath = (m_UserJson.contains(s_csParamLogPath)) ? m_UserJson[s_csParamLogPath] : s_cDefaultJson[s_csParamLogPath];
     m_sLogName = (m_UserJson.contains(s_csParamLogName)) ? m_UserJson[s_csParamLogName] : s_cDefaultJson[s_csParamLogName];
 
-    /* m_iCpuLoad = (m_UserJson.contains(s_csParamCpuLoad)) ? m_UserJson[s_csParamCpuLoad] : s_cDefaultJson[s_csParamCpuLoad];
-    m_iDiskFreeSpace = (m_UserJson.contains(s_csParamDiskFreeSpace)) ? m_UserJson[s_csParamDiskFreeSpace] : s_cDefaultJson[s_csParamDiskFreeSpace];
-    m_bHasInternetConnection = (m_UserJson.contains(s_csParamInternetConnection)) ? m_UserJson[s_csParamInternetConnection] : s_cDefaultJson[s_csParamInternetConnection];*/
+    m_iMinimalDeltaMB = (m_UserJson.contains(s_csParamMinimalDelta)) ? m_UserJson[s_csParamMinimalDelta] : s_cDefaultJson[s_csParamMinimalDelta];
 }
