@@ -2,20 +2,13 @@
 #include "logger.h"
 #include "config_parser.h"
 #include "internet_connection_status.h"
+#include "disk_status.h"
 
 int main()
-{
-	std::string fullName;
-	std::ostringstream oss;
-	CConfigParser configParser;
-	configParser.ParseConfigFile(oss);
-
-	fullName = configParser.GetLogPath() + configParser.GetLogName();
-	CLogger::Init(fullName);
-
-	LOG() << "START";
-
-	LOG() << "\n" << oss.str();
-
-	LOG() << "END\n\n";
+{	
+	CLogger::Init("../log.txt");
+	CDiskStatus diskStatus(10);
+	diskStatus.Start();
+	std::cin.get();
+	diskStatus.StopAndWait();
 }
