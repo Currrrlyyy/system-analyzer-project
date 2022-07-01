@@ -7,8 +7,11 @@
 int main()
 {	
 	CLogger::Init("../log.txt");
+	CInternetConnectionStatus internetConnection;
 	CDiskStatus diskStatus(10);
+	internetConnection.Start();
 	diskStatus.Start();
 	std::cin.get();
 	diskStatus.StopAndWait();
+	internetConnection.StopAndWait();
 }

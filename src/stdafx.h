@@ -24,6 +24,7 @@
 	#include <Windows.h>
 	#include <WinInet.h>
 	#include <fileapi.h>
+	#include <lmcons.h>
 #endif // _WIN32
 
 //Disk Status includes

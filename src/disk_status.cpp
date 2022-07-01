@@ -4,8 +4,8 @@
 #include "logger.h"
 
 
-const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::seconds(15);
-const static int coefConvertToMB = 1048576;
+static const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::minutes(1);
+static const int g_cCoefBytesToMegaBytes = 1048576;
 
 
 CDiskStatus::CDiskStatus(unsigned minimalDeltaMB):
@@ -71,8 +71,8 @@ void CDiskStatus::GetDrivesFullInfo()
         {
            std::string str(logicalDisk.begin(), logicalDisk.end());
            oss << "\tLogical drive " << str << std::endl;
-           oss << "\tCapacity: " << std::to_string(space.capacity / coefConvertToMB) << " MB" << std::endl;
-           oss << "\tFree: " << (space.free / coefConvertToMB) << " MB" << std::endl;
+           oss << "\tCapacity: " << std::to_string(space.capacity / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
+           oss << "\tFree: " << (space.free / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
         }
     }
     LOG() << oss.str();
@@ -97,11 +97,11 @@ void CDiskStatus::GetDrivesStatus()
     {
         for (auto& [logicalDisk, space] : logicalDisks)
         {
-            if ( labs( m_lastDiskSpace[logicalDisk] - space.free)  > 10 * coefConvertToMB)
+            if ( labs( m_lastDiskSpace[logicalDisk] - space.free)  > 10 * g_cCoefBytesToMegaBytes)
             {
                 oss << "\nFree space on physical disk #" << std::to_string(physicalDiskNumber) << ", logical drive " << logicalDisk << " has changed";
-                oss << "\tOld value: " << std::to_string(m_lastDiskSpace[logicalDisk] / coefConvertToMB) << " MB";
-                oss << "\tNew value: " << std::to_string(space.free / coefConvertToMB) << " MB";
+                oss << "\tOld value: " << std::to_string(m_lastDiskSpace[logicalDisk] / g_cCoefBytesToMegaBytes) << " MB";
+                oss << "\tNew value: " << std::to_string(space.free / g_cCoefBytesToMegaBytes) << " MB";
                 m_lastDiskSpace[logicalDisk] = space.free;
                 LOG() << oss.str();
                 oss.clear();
