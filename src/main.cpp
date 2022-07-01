@@ -1,21 +1,28 @@
 #include "stdafx.h"
-#include "logger.h"
-#include "config_parser.h"
-#include "internet_connection_status.h"
+#include "service.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-	std::string fullName;
-	std::ostringstream oss;
-	CConfigParser configParser;
-	configParser.ParseConfigFile(oss);
+	if (argc > 1)
+	{
+		if (argv[1] == std::string("/install"))
+		{
+			CService::Install();
+		}
+		else if (argv[1] == std::string("/uninstall"))
+		{
+			CService::Uninstall();
+		}
+		else
+		{
+			std::cout << "Unknown command!" << std::endl;;
+		}
+		return 0;
+	}
 
-	fullName = configParser.GetLogPath() + configParser.GetLogName();
-	CLogger::Init(fullName);
-
-	LOG() << "START";
-
-	LOG() << "\n" << oss.str();
-
-	LOG() << "END\n\n";
+	if (!CService::Run())
+	{
+		std::cout << "Can not run service application as console application" << std::endl;
+	}
+	return 0;
 }
