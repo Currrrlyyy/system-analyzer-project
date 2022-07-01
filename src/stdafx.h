@@ -27,3 +27,11 @@
 	#include <Windows.h>
 	#include <WinInet.h>
 #endif // _WIN32
+
+//Disk Status includes
+#include <Windows.h>
+#include <fileapi.h>
+#include <vector>
+#include <filesystem>
+#include <map>
+#include <optional>
