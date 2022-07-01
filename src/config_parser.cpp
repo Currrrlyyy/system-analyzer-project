@@ -86,12 +86,9 @@ void CConfigParser::ParseConfigFile(std::ostringstream& oss)
 
     oss << " >> Service parameters:\n";
     oss << "\tService name: " << GetServiceName() << "\n";
+    oss << "\tMinimal disk space delta in MB: " << GetMinimalDeltaMB() << "\n";
     oss << "\tLog file path: " << GetLogPath() << "\n";
     oss << "\tLog file name: " << GetLogName() << "\n";
-    //oss << "\tFree disk space: " << GetDiskFreeSpace() << "\n";
-    //oss << "\tCpu loaded: " << GetCpuLoad() << "\n";
-    //oss << "\tInternet connection available: " << GetHasInternetConnection() << "\n";
-
 }
 
 void CConfigParser::ValidateUserConfig(const json& cDefaultConfig, json& userConfig, std::ostringstream& oss)

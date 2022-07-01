@@ -22,7 +22,6 @@ private:
 	std::string m_sServiceName;
 	std::string m_sLogPath;
 	std::string m_sLogName;
-	int m_iDiskFreeSpace;
 	unsigned m_iMinimalDeltaMB;
 	
 
