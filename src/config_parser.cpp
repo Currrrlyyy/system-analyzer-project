@@ -134,6 +134,5 @@ void CConfigParser::InitializeMembers()
     m_sServiceName = (m_UserJson.contains(s_csParamServiceName)) ? m_UserJson[s_csParamServiceName] : s_cDefaultJson[s_csParamServiceName];
     m_sLogPath = (m_UserJson.contains(s_csParamLogPath)) ? m_UserJson[s_csParamLogPath] : s_cDefaultJson[s_csParamLogPath];
     m_sLogName = (m_UserJson.contains(s_csParamLogName)) ? m_UserJson[s_csParamLogName] : s_cDefaultJson[s_csParamLogName];
-
     m_iMinimalDeltaMB = (m_UserJson.contains(s_csParamMinimalDelta)) ? m_UserJson[s_csParamMinimalDelta] : s_cDefaultJson[s_csParamMinimalDelta];
 }
