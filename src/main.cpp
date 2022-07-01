@@ -2,15 +2,17 @@
 #include "logger.h"
 #include "config_parser.h"
 #include "internet_connection_status.h"
-#include "disk_status.h"
 
 int main()
-{	
-	
+{
 	CLogger::Init("../log.txt");
-	CDiskStatus diskStatus;
-	diskStatus.InitDrives();
-	diskStatus.Start();
+
+	LOG() << "START";
+
+	CInternetConnectionStatus internetConncetionStatus;
+	internetConncetionStatus.Start();
 	std::cin.get();
-	diskStatus.StopAndWait();
+	internetConncetionStatus.StopAndWait();
+
+	LOG() << "END\n\n";
 }
