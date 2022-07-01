@@ -5,9 +5,11 @@
 #include "disk_status.h"
 
 int main()
-{
+{	
+	
+	CLogger::Init("../log.txt");
 	CDiskStatus diskStatus;
-	diskStatus.GetDrivesList();
+	diskStatus.InitDrives();
 	diskStatus.Start();
 	std::cin.get();
 	diskStatus.StopAndWait();

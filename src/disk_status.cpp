@@ -3,11 +3,13 @@
 #include "logger.h"
 #include <iostream>
 
-const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::seconds(5);
+const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::seconds(15);
+const double coef = 1048576;
+
 
 CDiskStatus::CDiskStatus():
     m_bIsRunning(false),
-    m_bLastDiskSpace(false)
+    m_bLastDiskSpaceChanged(false)
 {}
 
 CDiskStatus::~CDiskStatus()
@@ -39,34 +41,39 @@ void CDiskStatus::StopAndWait()
 
 void CDiskStatus::Execute(std::future<void> shouldStop)
 {
-    std::cout << "CDiskStatus started\n";
+    LOG() << "CDiskStatus started";
+
+    GetDrivesFullInfo();
+
     while (shouldStop.wait_for(g_cDiskStatus_CheckDelay) == std::future_status::timeout)
-    {
-        LogDiskData();
-        std::cout << std::endl;
+    {  
+       UpdateDrivesInfo();
+       GetDrivesStatus();
     }
 
-    std::cout << "CDiskStatus stopped";
+    GetDrivesFullInfo();
+
+    LOG() << "CDiskStatus stopped";
 }
 
-std::optional<int> CDiskStatus::FindDiskNumber(wchar_t* drivesList)
+std::optional<int> CDiskStatus::FindDiskNumber(char* drivesList)
 {
     std::string name;
-    wchar_t volumePathName[MAX_PATH];
-    wchar_t volumeName[MAX_PATH];
+    char volumePathName[MAX_PATH];
+    char volumeName[MAX_PATH];
     DWORD bufferLength = MAX_PATH;
     BOOL isSuccessful = FALSE;
-    LPCWSTR fileName = drivesList;
+    LPSTR fileName = drivesList;
     HANDLE hdevice;
     VOLUME_DISK_EXTENTS outBuffer = {};
     DWORD bytesReturned = 0;
 
-    GetVolumePathNameW(fileName, volumePathName, bufferLength);
-    GetVolumeNameForVolumeMountPointW(volumePathName, volumeName, bufferLength);
+    GetVolumePathNameA(fileName, volumePathName, bufferLength);
+    GetVolumeNameForVolumeMountPointA(volumePathName, volumeName, bufferLength);
 
-    volumeName[wcslen(volumeName) - 1] = '\0';
+    volumeName[strlen(volumeName) - 1] = '\0';
 
-    hdevice = CreateFileW(
+    hdevice = CreateFileA(
         volumeName,          
         FILE_READ_ATTRIBUTES,                
         FILE_SHARE_READ,
@@ -91,14 +98,14 @@ std::optional<int> CDiskStatus::FindDiskNumber(wchar_t* drivesList)
     return static_cast<int>(outBuffer.Extents[0].DiskNumber);
 }
 
-void CDiskStatus::GetDrivesList()
+void CDiskStatus::InitDrives()
 {
     DWORD dwSize = MAX_PATH;
-    wchar_t logicalDrives[MAX_PATH] = { 0 };
+    char logicalDrives[MAX_PATH] = { 0 };
     std::optional<int> res;
-    wchar_t* singleDrive;
-
-    GetLogicalDriveStringsW(dwSize, logicalDrives);
+    char* singleDrive;
+    
+    GetLogicalDriveStrings(dwSize, logicalDrives);
 
     singleDrive = logicalDrives;
     while (*singleDrive)
@@ -107,24 +114,59 @@ void CDiskStatus::GetDrivesList()
         if (res)
         {
             m_DrivesInfo[*res][singleDrive] = std::filesystem::space(singleDrive);
+            m_lastDiskSpace.insert( std::pair<std::string, uintmax_t>( singleDrive, std::filesystem::space(singleDrive).free ) );
         }
-        singleDrive += wcslen(singleDrive) + 1;
+        singleDrive += strlen(singleDrive) + 1;
     }
 }
 
-void CDiskStatus::LogDiskData()
+void CDiskStatus::GetDrivesFullInfo()
 {
-    double coef = 1e+6;
-    for (auto& [key, value] : m_DrivesInfo)
+    std::ostringstream oss;
+    for (auto& [physicalDiskNumber, logicalDisks] : m_DrivesInfo)
     {
-        std::wcout << "Physical disk #" << key << ": " << std::endl;
-        for (auto& logicalDrive : value)
+        
+        oss << "\nPhysical disk #" << std::to_string(physicalDiskNumber) << ": " << std::endl;
+        for (auto& [logicalDisk, space] : logicalDisks)
         {
-            std::wcout << "\tLogical drive " << logicalDrive.first << std::endl;
-            std::wcout << "\tCapacity: " << logicalDrive.second.capacity / coef << " MB" << std::endl;
-            std::wcout << "\tAvailable: " << logicalDrive.second.available / coef << " MB" << std::endl;
-            std::wcout << "\tFree: " << logicalDrive.second.free / coef << " MB" << std::endl;
-            std::cout << std::endl;
+           std::string str(logicalDisk.begin(), logicalDisk.end());
+           oss << "\tLogical drive " << str << std::endl;
+           oss << "\tCapacity: " << std::to_string(space.capacity / coef) << " MB" << std::endl;
+           oss << "\tFree: " << (space.free / coef) << " MB" << std::endl;
         }
     }
+    LOG() << oss.str();
+
+}
+
+void CDiskStatus::UpdateDrivesInfo()
+{
+    for (auto& [physicalDiskNumber, logicalDisks] : m_DrivesInfo)
+    {
+        for (auto& [logicalDisk, space] : logicalDisks)
+        {
+            space = std::filesystem::space(logicalDisk);
+        }
+    }
+}
+
+void CDiskStatus::GetDrivesStatus()
+{
+    std::ostringstream oss;
+    for (auto& [physicalDiskNumber, logicalDisks] : m_DrivesInfo)
+    {
+        for (auto& [logicalDisk, space] : logicalDisks)
+        {
+            if ( labs( m_lastDiskSpace[logicalDisk] - space.free)  > 10 * coef)
+            {
+                oss << "\nFree space on physical disk #" << std::to_string(physicalDiskNumber) << ", logical drive " << logicalDisk << " has changed";
+                oss << "\tOld value: " << std::to_string(m_lastDiskSpace[logicalDisk] / coef) << " MB";
+                oss << "\tNew value: " << std::to_string(space.free / coef) << " MB";
+                m_lastDiskSpace[logicalDisk] = space.free;
+                LOG() << oss.str();
+                oss.clear();
+            }
+        }
+    }
+    
 }

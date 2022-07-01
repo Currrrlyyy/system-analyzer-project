@@ -9,20 +9,23 @@ public:
 
 	void Start();
 	void StopAndWait();
-
-	void GetDrivesList();
-	void LogDiskData();
+	void InitDrives();
+	void GetDrivesFullInfo();
 
 private:
 	void Execute(std::future<void> shouldStop);
+	void UpdateDrivesInfo();
+	void GetDrivesStatus();
+
 
 private:
-	std::map< int, std::map<std::wstring, std::filesystem::space_info> > m_DrivesInfo;
-	std::optional<int> FindDiskNumber(wchar_t* drivesList);
+	std::map< int, std::map<std::string, std::filesystem::space_info> > m_DrivesInfo;
+	std::map<std::string, uintmax_t> m_lastDiskSpace;
+	std::optional<int> FindDiskNumber(char* drivesList);
 	std::thread m_Thread;
 	std::promise<void> m_StopPromise;
 	bool m_bIsRunning;
-	bool m_bLastDiskSpace;
+	bool m_bLastDiskSpaceChanged;
 
 
 	
