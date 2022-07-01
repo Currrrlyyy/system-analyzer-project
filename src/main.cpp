@@ -6,11 +6,5 @@
 
 int main()
 {	
-	
-	CLogger::Init("../log.txt");
-	CDiskStatus diskStatus;
-	diskStatus.InitDrives();
-	diskStatus.Start();
-	std::cin.get();
-	diskStatus.StopAndWait();
+
 }

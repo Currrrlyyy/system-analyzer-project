@@ -4,10 +4,11 @@
 #include <iostream>
 
 const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::seconds(15);
-const double coef = 1048576;
+const static int coefConvertToMB = 1048576;
 
 
-CDiskStatus::CDiskStatus():
+CDiskStatus::CDiskStatus(unsigned minimalDeltaMB):
+    m_iMinimalDeltaMB(minimalDeltaMB),
     m_bIsRunning(false),
     m_bLastDiskSpaceChanged(false)
 {}
@@ -131,8 +132,8 @@ void CDiskStatus::GetDrivesFullInfo()
         {
            std::string str(logicalDisk.begin(), logicalDisk.end());
            oss << "\tLogical drive " << str << std::endl;
-           oss << "\tCapacity: " << std::to_string(space.capacity / coef) << " MB" << std::endl;
-           oss << "\tFree: " << (space.free / coef) << " MB" << std::endl;
+           oss << "\tCapacity: " << std::to_string(space.capacity / coefConvertToMB) << " MB" << std::endl;
+           oss << "\tFree: " << (space.free / coefConvertToMB) << " MB" << std::endl;
         }
     }
     LOG() << oss.str();
@@ -157,11 +158,11 @@ void CDiskStatus::GetDrivesStatus()
     {
         for (auto& [logicalDisk, space] : logicalDisks)
         {
-            if ( labs( m_lastDiskSpace[logicalDisk] - space.free)  > 10 * coef)
+            if ( labs( m_lastDiskSpace[logicalDisk] - space.free)  > 10 * coefConvertToMB)
             {
                 oss << "\nFree space on physical disk #" << std::to_string(physicalDiskNumber) << ", logical drive " << logicalDisk << " has changed";
-                oss << "\tOld value: " << std::to_string(m_lastDiskSpace[logicalDisk] / coef) << " MB";
-                oss << "\tNew value: " << std::to_string(space.free / coef) << " MB";
+                oss << "\tOld value: " << std::to_string(m_lastDiskSpace[logicalDisk] / coefConvertToMB) << " MB";
+                oss << "\tNew value: " << std::to_string(space.free / coefConvertToMB) << " MB";
                 m_lastDiskSpace[logicalDisk] = space.free;
                 LOG() << oss.str();
                 oss.clear();

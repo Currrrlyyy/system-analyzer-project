@@ -3,7 +3,7 @@
 class CDiskStatus
 {
 public:
-	CDiskStatus();
+	CDiskStatus(unsigned minimalDeltaMB);
 
 	~CDiskStatus();
 
@@ -24,6 +24,7 @@ private:
 	std::optional<int> FindDiskNumber(char* drivesList);
 	std::thread m_Thread;
 	std::promise<void> m_StopPromise;
+	int m_iMinimalDeltaMB;
 	bool m_bIsRunning;
 	bool m_bLastDiskSpaceChanged;
 
