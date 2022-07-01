@@ -6,7 +6,7 @@ const static json s_cDefaultJson = {
         {"diskFreeSpace", 90U},
         {"hasInternetConnection", true},
         {"logPath", "../"},
-        {"logName", "log.log"},
+        {"logName", "log.txt"},
         {"cpuLoad", 40U}
 };
 const static std::string s_csConfigFileName = "../config/config.json";
