@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "disk_status.h"
+#include "utils.h"
 #include "logger.h"
-#include <iostream>
+
 
 const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::seconds(15);
 const static int coefConvertToMB = 1048576;
@@ -11,7 +12,9 @@ CDiskStatus::CDiskStatus(unsigned minimalDeltaMB):
     m_iMinimalDeltaMB(minimalDeltaMB),
     m_bIsRunning(false),
     m_bLastDiskSpaceChanged(false)
-{}
+{
+    utils::InitDrives(m_DrivesInfo, m_lastDiskSpace);
+}
 
 CDiskStatus::~CDiskStatus()
 {
@@ -55,70 +58,6 @@ void CDiskStatus::Execute(std::future<void> shouldStop)
     GetDrivesFullInfo();
 
     LOG() << "CDiskStatus stopped";
-}
-
-std::optional<int> CDiskStatus::FindDiskNumber(char* drivesList)
-{
-    std::string name;
-    char volumePathName[MAX_PATH];
-    char volumeName[MAX_PATH];
-    DWORD bufferLength = MAX_PATH;
-    BOOL isSuccessful = FALSE;
-    LPSTR fileName = drivesList;
-    HANDLE hdevice;
-    VOLUME_DISK_EXTENTS outBuffer = {};
-    DWORD bytesReturned = 0;
-
-    GetVolumePathNameA(fileName, volumePathName, bufferLength);
-    GetVolumeNameForVolumeMountPointA(volumePathName, volumeName, bufferLength);
-
-    volumeName[strlen(volumeName) - 1] = '\0';
-
-    hdevice = CreateFileA(
-        volumeName,          
-        FILE_READ_ATTRIBUTES,                
-        FILE_SHARE_READ,
-        NULL,             
-        OPEN_EXISTING,    
-        FILE_ATTRIBUTE_NORMAL,                
-        NULL);
-
-    isSuccessful = DeviceIoControl(
-        hdevice,                       
-        IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, 
-        NULL,
-        0,                       
-        &outBuffer,          
-        256,
-        &bytesReturned,                     
-        NULL);
-
-    if (!isSuccessful)
-        return std::nullopt;
-
-    return static_cast<int>(outBuffer.Extents[0].DiskNumber);
-}
-
-void CDiskStatus::InitDrives()
-{
-    DWORD dwSize = MAX_PATH;
-    char logicalDrives[MAX_PATH] = { 0 };
-    std::optional<int> res;
-    char* singleDrive;
-    
-    GetLogicalDriveStrings(dwSize, logicalDrives);
-
-    singleDrive = logicalDrives;
-    while (*singleDrive)
-    {
-        res = FindDiskNumber(singleDrive);
-        if (res)
-        {
-            m_DrivesInfo[*res][singleDrive] = std::filesystem::space(singleDrive);
-            m_lastDiskSpace.insert( std::pair<std::string, uintmax_t>( singleDrive, std::filesystem::space(singleDrive).free ) );
-        }
-        singleDrive += strlen(singleDrive) + 1;
-    }
 }
 
 void CDiskStatus::GetDrivesFullInfo()
