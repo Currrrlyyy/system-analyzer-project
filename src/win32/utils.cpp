@@ -60,15 +60,16 @@ namespace utils
         GetLogicalDriveStrings(dwSize, logicalDrives);
 
         singleDrive = logicalDrives;
-        while (*singleDrive)
+        while (*singleDrive != '\0')
         {
             res = FindDiskNumber(singleDrive);
             if (res)
             {
                 DrivesInfo[*res][singleDrive] = std::filesystem::space(singleDrive);
                 lastDiskSpace.insert(std::pair<std::string, uintmax_t>(singleDrive, std::filesystem::space(singleDrive).free));
-                singleDrive += strlen(singleDrive) + 1;
             }
+            singleDrive += strlen(singleDrive) + 1;
+
         }
     } // namespace utils
 }
