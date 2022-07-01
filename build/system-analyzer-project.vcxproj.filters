@@ -28,9 +28,6 @@
     <ClCompile Include="..\src\internet_connection_status.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\disk_status.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\stdafx.h">
@@ -46,9 +43,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\utils.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\disk_status.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
