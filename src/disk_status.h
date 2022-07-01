@@ -3,7 +3,7 @@
 class CDiskStatus
 {
 public:
-	CDiskStatus(unsigned minimalDeltaMB);
+	CDiskStatus(int minimalDeltaMB);
 
 	~CDiskStatus();
 

@@ -1,7 +1,6 @@
 {
-    "cpuLoad": 70,
-    "diskFreeSpace": 50,
-    "hasInternetConnection": false,
-    "serviceName": "Cucumbrella",
-    "srakaDupa": null
+    "serviceName": "JesusIncService",
+    "minimalDiskSpaceDelta": 10,
+    "logPath": "../",
+    "logName": "log.txt"
 }

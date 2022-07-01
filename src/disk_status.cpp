@@ -3,12 +3,14 @@
 #include "disk_status.h"
 #include "logger.h"
 
-
+// interval for status check-up 
 static const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::minutes(1);
+
+//Convert megabytes to bytes
 static const int g_cCoefBytesToMegaBytes = 1048576;
 
 
-CDiskStatus::CDiskStatus(unsigned minimalDeltaMB):
+CDiskStatus::CDiskStatus(int minimalDeltaMB):
     m_iMinimalDeltaMB(minimalDeltaMB),
     m_bIsRunning(false),
     m_bLastDiskSpaceChanged(false)
@@ -21,6 +23,7 @@ CDiskStatus::~CDiskStatus()
     StopAndWait();
 }
 
+// Start service
 void CDiskStatus::Start()
 {
     if (m_bIsRunning)
@@ -29,6 +32,8 @@ void CDiskStatus::Start()
     }
     m_bIsRunning = true;
     m_StopPromise = std::promise<void>();
+    // Execute service in a new thread
+
     m_Thread = std::thread(&CDiskStatus::Execute, this, m_StopPromise.get_future());
 }
 

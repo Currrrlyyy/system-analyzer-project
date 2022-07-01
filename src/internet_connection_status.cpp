@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "logger.h"
 
+// interval for status check-up 
 const std::chrono::duration g_cInternetStatus_CheckDelay = std::chrono::minutes(1);
 
 CInternetConnectionStatus::CInternetConnectionStatus()
@@ -16,7 +17,9 @@ CInternetConnectionStatus::~CInternetConnectionStatus()
 	StopAndWait();
 }
 
+// Service start
 void CInternetConnectionStatus::Start()
+
 {
 	if (m_bIsRunning)
 	{
@@ -24,9 +27,11 @@ void CInternetConnectionStatus::Start()
 	}
 	m_bIsRunning = true;
 	m_StopPromise = std::promise<void>();
+	// Execute service in a new thread
 	m_Thread = std::thread(&CInternetConnectionStatus::Execute, this, m_StopPromise.get_future());
 }
 
+// Stop service and wait for thread to finish the job
 void CInternetConnectionStatus::StopAndWait()
 {
 	if (!m_bIsRunning)
@@ -38,10 +43,12 @@ void CInternetConnectionStatus::StopAndWait()
 	m_bIsRunning = false;
 }
 
+//Execute service to check internet connection status
 void CInternetConnectionStatus::Execute(std::future<void> shouldStop)
 {
 	LOG() << "CInternetConnectionStatus started";
 
+	// Check with certain period
 	while (shouldStop.wait_for(g_cInternetStatus_CheckDelay) == std::future_status::timeout)
 	{
 		const bool bInternetConnection = utils::IsConnectedToInternet();
