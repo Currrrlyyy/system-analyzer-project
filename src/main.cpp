@@ -5,14 +5,17 @@
 
 int main()
 {
-	CLogger::Init("../log.txt");
+	std::string fullName;
+	std::ostringstream oss;
+	CConfigParser configParser;
+	configParser.ParseConfigFile(oss);
+
+	fullName = configParser.GetLogPath() + configParser.GetLogName();
+	CLogger::Init(fullName);
 
 	LOG() << "START";
 
-	CInternetConnectionStatus internetConncetionStatus;
-	internetConncetionStatus.Start();
-	std::cin.get();
-	internetConncetionStatus.StopAndWait();
+	LOG() << "\n" << oss.str();
 
 	LOG() << "END\n\n";
 }

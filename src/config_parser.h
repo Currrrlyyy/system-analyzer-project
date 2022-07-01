@@ -7,37 +7,25 @@ class CConfigParser
 {
 public:
 	CConfigParser();
-	std::string GetLogData();
-	int GetDiskFreeSpace();
-	int GetCpuLoad();
-	bool GetHasInternetConnection();
+	//int GetDiskFreeSpace();
+	//int GetCpuLoad();
+	//bool GetHasInternetConnection();
+	std::string GetLogPath();
+	std::string GetLogName();
 	std::string GetServiceName();
-	void LogServiceData();
+	void ParseConfigFile(std::ostringstream& oss);
 
 private:
-	void ParseConfigFile();
-	void CompareConfigFiles(const json& cDefaultConfig, json& userConfig);
-	void CheckValuesValidity();
+	void ValidateUserConfig(const json& cDefaultConfig, json& userConfig, std::ostringstream& oss);
 	void InitializeMembers();
 
 private:
-	std::ostringstream m_Oss;
 	json m_UserJson;
 	std::string m_sServiceName;
-	int m_iDiskFreeSpace;
-	int m_iCpuLoad;
-	bool m_bHasInternetConnection;
-	bool m_bConfigExists;
-	bool m_bConfigParseSuccsessful;
+	std::string m_sLogPath;
+	std::string m_sLogName;
+	//int m_iDiskFreeSpace;
+	//int m_iCpuLoad;
+	//bool m_bHasInternetConnection;
 
-private:
-	static const std::string s_csParamServiceName;
-	static const std::string s_csParamDiskFreeSpace;
-	static const std::string s_csParamCpuLoad;
-	static const std::string s_csParamInternetConnection;
-	static const std::string s_csConfigFileName;
-	static const json s_cDefaultJson;
 };
-
-
-

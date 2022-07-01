@@ -1,13 +1,9 @@
 #pragma once
 
-//Common includes
-#include <iostream>
-#include <string>
-
 //Config parser includes
 #include <fstream>
 #include <filesystem>
-#include "json_parser.hpp"
+#include "nlohmann_json_parser/json_parser.hpp"
 
 //Logger includes
 #include <chrono>
@@ -27,3 +23,5 @@
 	#include <Windows.h>
 	#include <WinInet.h>
 #endif // _WIN32
+
+
