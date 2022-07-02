@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "service.h"
-#include "utils.h"
 
 int main(int argc, char* argv[])
 {
