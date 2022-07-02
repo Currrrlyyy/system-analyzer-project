@@ -165,7 +165,7 @@ VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv)
 	CDiskStatus diskStatus(config.GetMinimalDeltaMB());
 	std::future<void> shouldStop = g_StopPromise.get_future();
 
-	LOG() << "Start";
+	LOG() << "\n >> Start";
 
 	internetConnectionStatus.Start();
 	diskStatus.Start();
@@ -177,7 +177,9 @@ VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv)
 	internetConnectionStatus.StopAndWait();
 	diskStatus.StopAndWait();
 
-	LOG() << "End\n\n";
+	std::string endSymbolSeq(100, '*');
+	LOG() << "\n >> End\n\n" << endSymbolSeq << "\n";
+	
 
 	SetServiceStatus(SERVICE_STOPPED);
 }

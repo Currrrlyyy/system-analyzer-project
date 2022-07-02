@@ -12,8 +12,7 @@ static const int g_cCoefBytesToMegaBytes = 1048576;
 
 CDiskStatus::CDiskStatus(int minimalDeltaMB):
     m_iMinimalDeltaMB(minimalDeltaMB),
-    m_bIsRunning(false),
-    m_bLastDiskSpaceChanged(false)
+    m_bIsRunning(false)
 {
     utils::InitDrives(m_DrivesInfo, m_lastDiskSpace);
 }
@@ -33,10 +32,10 @@ void CDiskStatus::Start()
     m_bIsRunning = true;
     m_StopPromise = std::promise<void>();
     // Execute service in a new thread
-
     m_Thread = std::thread(&CDiskStatus::Execute, this, m_StopPromise.get_future());
 }
 
+// Stop service and wait for thread to finish the job
 void CDiskStatus::StopAndWait()
 {
     if (!m_bIsRunning)
@@ -48,9 +47,10 @@ void CDiskStatus::StopAndWait()
     m_bIsRunning = false;
 }
 
+//Execute service to check disks space status
 void CDiskStatus::Execute(std::future<void> shouldStop)
 {
-    LOG() << "CDiskStatus started";
+    LOG() << "\n >> CDiskStatus started";
 
     GetDrivesFullInfo();
 
@@ -62,28 +62,30 @@ void CDiskStatus::Execute(std::future<void> shouldStop)
 
     GetDrivesFullInfo();
 
-    LOG() << "CDiskStatus stopped";
+    LOG() << "\n >> CDiskStatus stopped";
 }
 
+// Log info about space on user disks
 void CDiskStatus::GetDrivesFullInfo()
 {
     std::ostringstream oss;
     for (auto& [physicalDiskNumber, logicalDisks] : m_DrivesInfo)
     {
         
-        oss << "\nPhysical disk #" << std::to_string(physicalDiskNumber) << ": " << std::endl;
+        oss << "\n >> Physical disk #" << std::to_string(physicalDiskNumber) << ": ";
         for (auto& [logicalDisk, space] : logicalDisks)
         {
            std::string str(logicalDisk.begin(), logicalDisk.end());
-           oss << "\tLogical drive " << str << std::endl;
-           oss << "\tCapacity: " << std::to_string(space.capacity / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
-           oss << "\tFree: " << (space.free / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
+           oss << "\n\t >> Logical drive " << str << std::endl;
+           oss << "\t\tCapacity: " << std::to_string(space.capacity / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
+           oss << "\t\tFree: " << (space.free / g_cCoefBytesToMegaBytes) << " MB";
         }
     }
     LOG() << oss.str();
 
 }
 
+// Update information about space on disks 
 void CDiskStatus::UpdateDrivesInfo()
 {
     for (auto& [physicalDiskNumber, logicalDisks] : m_DrivesInfo)
@@ -95,6 +97,7 @@ void CDiskStatus::UpdateDrivesInfo()
     }
 }
 
+// Log if free space on disk has changed
 void CDiskStatus::GetDrivesStatus()
 {
     std::ostringstream oss;

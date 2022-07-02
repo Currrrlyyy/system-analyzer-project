@@ -46,7 +46,7 @@ void CInternetConnectionStatus::StopAndWait()
 //Execute service to check internet connection status
 void CInternetConnectionStatus::Execute(std::future<void> shouldStop)
 {
-	LOG() << "CInternetConnectionStatus started";
+	LOG() << "\n >> CInternetConnectionStatus started";
 
 	// Check with certain period
 	while (shouldStop.wait_for(g_cInternetStatus_CheckDelay) == std::future_status::timeout)
@@ -56,15 +56,15 @@ void CInternetConnectionStatus::Execute(std::future<void> shouldStop)
 		{
 			if (m_bLastInternetConnection)
 			{
-				LOG() << "Internet connection status changed from Online to Offline";
+				LOG() << "\n >> Internet connection status changed from 'Online' to 'Offline'";
 			}
 			else
 			{
-				LOG() << "Internet connection status changed from Offline to Online";
+				LOG() << "\n >> Internet connection status changed from 'Offline' to 'Online'";
 			}
 			m_bLastInternetConnection = bInternetConnection;
 		}
 	}
 
-	LOG() << "CInternetConnectionStatus stoped";
+	LOG() << "\n >> CInternetConnectionStatus stopped";
 }

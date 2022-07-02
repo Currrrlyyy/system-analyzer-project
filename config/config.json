@@ -1,13 +1,6 @@
 {
-<<<<<<< HEAD
     "serviceName": "JesusIncService",
     "minimalDiskSpaceDelta": 10,
-    "logPath": "../",
+    "logPath": "../../../",
     "logName": "log.txt"
-=======
-        "serviceName": "SystemAnalyzer",
-        "minimalDiskSpaceDelta": 50,
-        "logPath": "D:/",
-        "logName": "log2.txt"
->>>>>>> service-application
 }

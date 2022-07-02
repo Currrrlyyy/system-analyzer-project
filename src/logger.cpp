@@ -5,6 +5,7 @@
 std::optional<std::string> CLogger::s_LogFileName = std::nullopt;
 std::mutex CLogger::s_Mutex;
 
+// Create log file in directory with given name
 void CLogger::Init(const std::string& csLogFileName)
 {
     s_LogFileName.emplace(csLogFileName);
@@ -32,21 +33,26 @@ CLogger& CLogger::AsLValue()
     return *this;
 }
 
+// Write system time in log file
 void CLogger::AddTimestamp()
 {
     auto now = std::chrono::system_clock::now();
     std::time_t time = std::chrono::system_clock::to_time_t(now);
     std::tm* tm = std::localtime(&time);
+
+    // If couldn't get system time
     if (!tm)
     {
         m_Buffer << "[] ";
     }
+    // Otherwise
     else
     {
         m_Buffer << "[" << std::put_time(tm, "%Y-%m-%d %X") << "] ";
     }
 }
 
+// Write user name in log file
 void CLogger::AddAccountName()
 {
     m_Buffer << "[" << utils::GetAccountName().value_or("") << "] ";

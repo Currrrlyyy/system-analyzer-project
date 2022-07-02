@@ -8,7 +8,6 @@ public:
 	CConfigParser();
 	std::string GetLogPath();
 	std::string GetLogName();
-	std::string GetServiceName();
 	int GetMinimalDeltaMB();
 	void ParseConfigFile(std::ostringstream& oss);
 
@@ -17,9 +16,7 @@ private:
 	void InitializeMembers();
 
 private:
-	json m_UserJson;
-	std::string m_sServiceName;
-	std::string m_sLogPath;
+	json m_UserJson;	std::string m_sLogPath;
 	std::string m_sLogName;
 	unsigned m_iMinimalDeltaMB;
 };

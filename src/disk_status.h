@@ -24,7 +24,5 @@ private:
 	std::promise<void> m_StopPromise;
 	int m_iMinimalDeltaMB;
 	bool m_bIsRunning;
-	bool m_bLastDiskSpaceChanged;
-
 };
 

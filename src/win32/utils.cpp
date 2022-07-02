@@ -5,6 +5,7 @@ namespace utils
 {
     const DWORD g_cServiceConfigBuffer_MaxBytesSize = 8192UL;
 
+    // Try to get system user name
     std::optional<std::string> GetAccountName()
     {
         char szBuffer[UNLEN + 1] = { 0 };
@@ -17,6 +18,7 @@ namespace utils
         return std::string(szBuffer, static_cast<std::size_t>(cbBuffer));
     }
 
+    // Return path of service .exe file
     std::optional<std::string> GetServiceBinaryPath(const std::string& csServiceName)
     {
         std::optional<std::string> binaryPath = std::nullopt;
@@ -65,11 +67,13 @@ namespace utils
         return binaryPath;
     }
 
+    // Return internet connection status
     bool IsConnectedToInternet()
     {
         return InternetCheckConnection("http://www.google.com", FLAG_ICC_FORCE_CONNECTION, 0);
     }
 
+    // Return number of physical disk on computer
     std::optional<int> FindDiskNumber(char* drivesList)
     {
         std::string name;
@@ -112,6 +116,7 @@ namespace utils
         return static_cast<int>(outBuffer.Extents[0].DiskNumber);
     }
     
+    // Find all logical drives on computer and write data about their storage
     void InitDrives(std::map< int, std::map<std::string, std::filesystem::space_info> >& DrivesInfo, std::map<std::string, uintmax_t>& lastDiskSpace)
     {
         DWORD dwSize = MAX_PATH;
@@ -134,4 +139,5 @@ namespace utils
 
         }
     }
+
 } // namespace utils
