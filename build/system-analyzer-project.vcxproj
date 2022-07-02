@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\config_parser.cpp" />
+    <ClCompile Include="..\src\disk_status.cpp" />
     <ClCompile Include="..\src\internet_connection_status.cpp" />
     <ClCompile Include="..\src\logger.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\config_parser.h" />
+    <ClInclude Include="..\src\disk_status.h" />
     <ClInclude Include="..\src\internet_connection_status.h" />
     <ClInclude Include="..\src\logger.h" />
     <ClInclude Include="..\src\service.h" />

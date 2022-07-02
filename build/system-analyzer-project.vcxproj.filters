@@ -28,6 +28,9 @@
     <ClCompile Include="..\src\internet_connection_status.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\disk_status.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\win32\service.cpp">
       <Filter>src\win32</Filter>
     </ClCompile>
@@ -46,6 +49,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\utils.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\disk_status.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\service.h">
