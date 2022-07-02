@@ -31,6 +31,9 @@
     <ClCompile Include="..\src\disk_status.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\win32\service.cpp">
+      <Filter>src\win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\stdafx.h">

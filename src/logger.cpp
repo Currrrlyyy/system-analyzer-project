@@ -39,7 +39,7 @@ void CLogger::AddTimestamp()
     std::tm* tm = std::localtime(&time);
     if (!tm)
     {
-        m_Buffer << "[ ] ";
+        m_Buffer << "[] ";
     }
     else
     {
@@ -49,13 +49,5 @@ void CLogger::AddTimestamp()
 
 void CLogger::AddAccountName()
 {
-    std::optional<std::string> accountName = utils::GetAccountName();
-    if (!accountName)
-    {
-        m_Buffer << "[ ] ";
-    }
-    else
-    {
-        m_Buffer << "[" << *accountName << "] ";
-    }
+    m_Buffer << "[" << utils::GetAccountName().value_or("") << "] ";
 }

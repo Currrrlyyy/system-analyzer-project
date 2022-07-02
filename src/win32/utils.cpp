@@ -1,17 +1,68 @@
 #include "stdafx.h"
+#include "utils.h"
 
 namespace utils
 {
+    const DWORD g_cServiceConfigBuffer_MaxBytesSize = 8192UL;
+
     std::optional<std::string> GetAccountName()
     {
-        DWORD cbBuffer = UNLEN + 1;
         char szBuffer[UNLEN + 1] = { 0 };
+        DWORD cbBuffer = sizeof(szBuffer);
         BOOL bRes = GetUserName(szBuffer, &cbBuffer);
         if (bRes == FALSE)
         {
             return std::nullopt;
         }
         return std::string(szBuffer, static_cast<std::size_t>(cbBuffer));
+    }
+
+    std::optional<std::string> GetServiceBinaryPath(const std::string& csServiceName)
+    {
+        std::optional<std::string> binaryPath = std::nullopt;
+        SC_HANDLE schSCManager = nullptr;
+        SC_HANDLE schService = nullptr;
+
+        do
+        {
+            schSCManager = OpenSCManager(nullptr, nullptr, SC_MANAGER_ALL_ACCESS);
+            if (schSCManager == nullptr)
+            {
+                break;
+            }
+
+            schService = OpenService(schSCManager, csServiceName.c_str(), SERVICE_ALL_ACCESS);
+            if (schService == nullptr)
+            {
+                break;
+            }
+
+            std::vector<BYTE> serviceConfigBuffer(g_cServiceConfigBuffer_MaxBytesSize);
+            DWORD dwBytesNeeded = 0UL;
+            LPQUERY_SERVICE_CONFIG pServiceConfig = (LPQUERY_SERVICE_CONFIG)&serviceConfigBuffer[0];
+
+            if (QueryServiceConfig(schService, pServiceConfig, serviceConfigBuffer.size(), &dwBytesNeeded) == FALSE)
+            {
+                break;
+            }
+
+            binaryPath = pServiceConfig->lpBinaryPathName;
+
+        } while (false);
+
+        if (schService)
+        {
+            CloseServiceHandle(schService);
+            schService = nullptr;
+        }
+
+        if (schSCManager)
+        {
+            CloseServiceHandle(schSCManager);
+            schSCManager = nullptr;
+        }
+
+        return binaryPath;
     }
 
     bool IsConnectedToInternet()
@@ -82,5 +133,5 @@ namespace utils
             singleDrive += strlen(singleDrive) + 1;
 
         }
-    } // namespace utils
-}
+    }
+} // namespace utils
