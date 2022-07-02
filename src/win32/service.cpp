@@ -1,7 +1,10 @@
 #include "stdafx.h"
 #include "service.h"
+#include "utils.h"
 #include "logger.h"
+#include "config_parser.h"
 #include "internet_connection_status.h"
+#include "disk_status.h"
 
 static const std::string g_csServiceName = "SystemAnalyzer";
 
@@ -134,25 +137,45 @@ VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv)
 		return;
 	}
 
+	char szDrive[MAX_PATH] = { 0 };
+	char szPath[MAX_PATH] = { 0 };
+	_splitpath(
+		utils::GetServiceBinaryPath(g_csServiceName).value_or("").c_str(),
+		szDrive,
+		szPath,
+		nullptr,
+		nullptr);
+
+	SetCurrentDirectory((std::string(szDrive) + std::string(szPath)).c_str());
+
 	g_ServiceStatus.dwServiceType = SERVICE_WIN32_OWN_PROCESS;
 	g_ServiceStatus.dwControlsAccepted = SERVICE_ACCEPT_STOP;
 	g_ServiceStatus.dwServiceSpecificExitCode = 0UL;
 
-	SetServiceStatus(SERVICE_START_PENDING, NO_ERROR, 3000);
+	SetServiceStatus(SERVICE_START_PENDING, NO_ERROR, 3000UL);
 
-	CLogger::Init("D:/log.txt");
+	CConfigParser config;
+	std::ostringstream logBuffer;
+	config.ParseConfigFile(logBuffer);
+
+	CLogger::Init(config.GetLogPath() + config.GetLogName());
+	LOG() << logBuffer.str();
+
 	CInternetConnectionStatus internetConnectionStatus;
+	CDiskStatus diskStatus(config.GetMinimalDeltaMB());
 	std::future<void> shouldStop = g_StopPromise.get_future();
 
-	LOG() << "Starting";
+	LOG() << "Start";
 
 	internetConnectionStatus.Start();
+	diskStatus.Start();
 
 	SetServiceStatus(SERVICE_RUNNING);
 
 	shouldStop.wait();
 
 	internetConnectionStatus.StopAndWait();
+	diskStatus.StopAndWait();
 
 	LOG() << "End\n\n";
 

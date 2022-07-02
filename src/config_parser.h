@@ -1,6 +1,5 @@
 #pragma once
 
-
 using json = nlohmann::json;
 
 class CConfigParser
@@ -23,6 +22,4 @@ private:
 	std::string m_sLogPath;
 	std::string m_sLogName;
 	unsigned m_iMinimalDeltaMB;
-	
-
 };

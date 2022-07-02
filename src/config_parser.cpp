@@ -7,7 +7,7 @@ const static json s_cDefaultJson = {
         {"logPath", "../"},
         {"logName", "log.txt"}
 };
-const static std::string s_csConfigFileName = "../config/config.json";
+const static std::string s_csConfigFileName = "../../../config/config.json";
 const static std::string s_csParamServiceName = "serviceName";
 const static std::string s_csParamLogPath = "logPath";
 const static std::string s_csParamLogName = "logName";

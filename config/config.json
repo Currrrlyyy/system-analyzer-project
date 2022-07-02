@@ -1,7 +1,6 @@
 {
-    "cpuLoad": 70,
-    "diskFreeSpace": 50,
-    "hasInternetConnection": false,
-    "serviceName": "Cucumbrella",
-    "srakaDupa": null
+        "serviceName": "SystemAnalyzer",
+        "minimalDiskSpaceDelta": 50,
+        "logPath": "D:/",
+        "logName": "log2.txt"
 }
