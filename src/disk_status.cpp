@@ -9,6 +9,8 @@ static const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::minut
 //Convert megabytes to bytes
 static const int g_cCoefBytesToMegaBytes = 1048576;
 
+//Critical space on disk(in %)
+static const int g_cCriticalSpaceDiskPercentage = 10;
 
 CDiskStatus::CDiskStatus(int minimalDeltaMB):
     m_iMinimalDeltaMB(minimalDeltaMB),
@@ -78,7 +80,11 @@ void CDiskStatus::GetDrivesFullInfo()
            std::string str(logicalDisk.begin(), logicalDisk.end());
            oss << "\n\t >> Logical drive " << str << std::endl;
            oss << "\t\tCapacity: " << std::to_string(space.capacity / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
-           oss << "\t\tFree: " << (space.free / g_cCoefBytesToMegaBytes) << " MB";
+           oss << "\t\tFree: " << (space.free / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
+           if ( DriveLowSpace(space) )
+           {
+               oss << "\t\tWarning, low free space on disk(less than " << g_cCriticalSpaceDiskPercentage << "%)";
+           }
         }
     }
     LOG() << oss.str();
@@ -117,4 +123,11 @@ void CDiskStatus::GetDrivesStatus()
         }
     }
     
+}
+
+bool CDiskStatus::DriveLowSpace(std::filesystem::space_info driveSpace)
+{
+    double capacity = driveSpace.capacity;
+    double freeSpace = driveSpace.free;
+    return (freeSpace * 100 / capacity) < g_cCriticalSpaceDiskPercentage;
 }
