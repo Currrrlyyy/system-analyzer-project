@@ -15,7 +15,7 @@ private:
 	void Execute(std::future<void> shouldStop);
 	void UpdateDrivesInfo();
 	void GetDrivesStatus();
-
+	bool DriveLowSpace(std::filesystem::space_info driveSpace);
 
 private:
 	std::map< int, std::map<std::string, std::filesystem::space_info> > m_DrivesInfo;
