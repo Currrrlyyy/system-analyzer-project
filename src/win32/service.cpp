@@ -5,6 +5,7 @@
 #include "config_parser.h"
 #include "internet_connection_status.h"
 #include "disk_status.h"
+#include "cpu_load_status.h"
 
 static const std::string g_csServiceName = "SystemAnalyzer";
 
@@ -161,14 +162,17 @@ VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv)
 	CLogger::Init(config.GetLogPath() + config.GetLogName());
 	LOG() << logBuffer.str();
 
-	CInternetConnectionStatus internetConnectionStatus;
-	CDiskStatus diskStatus(config.GetMinimalDeltaMB());
+	CInternetConnectionStatus internetConnectionStatus(config.GetInternetStatusDelay());
+	CDiskStatus diskStatus(config.GetMinimalDeltaMB(), config.GetCriticalDiskSpace(), config.GetDiskStatusDelay());
+	CCpuLoadStatus cpuLoadStatus(config.GetCriticalCpuLoad(), config.GetCpuLoadDelay());
 	std::future<void> shouldStop = g_StopPromise.get_future();
 
 	LOG() << "\n >> Start";
 
 	internetConnectionStatus.Start();
 	diskStatus.Start();
+	cpuLoadStatus.Start();
+	
 
 	SetServiceStatus(SERVICE_RUNNING);
 
@@ -176,6 +180,7 @@ VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv)
 
 	internetConnectionStatus.StopAndWait();
 	diskStatus.StopAndWait();
+	cpuLoadStatus.StopAndWait();
 
 	std::string endSymbolSeq(100, '*');
 	LOG() << "\n >> End\n\n" << endSymbolSeq << "\n";

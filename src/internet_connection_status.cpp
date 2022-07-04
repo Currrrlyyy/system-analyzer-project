@@ -4,11 +4,10 @@
 #include "logger.h"
 
 // interval for status check-up 
-const std::chrono::duration g_cInternetStatus_CheckDelay = std::chrono::minutes(1);
-
-CInternetConnectionStatus::CInternetConnectionStatus()
+CInternetConnectionStatus::CInternetConnectionStatus(int internetStatusDelay)
 	: m_bIsRunning(false)
 	, m_bLastInternetConnection(false)
+	, m_InternetStatusDelay(internetStatusDelay)
 {
 }
 
@@ -49,7 +48,7 @@ void CInternetConnectionStatus::Execute(std::future<void> shouldStop)
 	LOG() << "\n >> CInternetConnectionStatus started";
 
 	// Check with certain period
-	while (shouldStop.wait_for(g_cInternetStatus_CheckDelay) == std::future_status::timeout)
+	while (shouldStop.wait_for(m_InternetStatusDelay) == std::future_status::timeout)
 	{
 		const bool bInternetConnection = utils::IsConnectedToInternet();
 		if (bInternetConnection != m_bLastInternetConnection)

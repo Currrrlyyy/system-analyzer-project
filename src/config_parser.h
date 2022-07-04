@@ -9,6 +9,12 @@ public:
 	std::string GetLogPath();
 	std::string GetLogName();
 	int GetMinimalDeltaMB();
+	int GetCriticalCpuLoad();
+	int GetCriticalDiskSpace();
+	int GetDiskStatusDelay();
+	int GetCpuLoadDelay();
+	int GetInternetStatusDelay();
+
 	void ParseConfigFile(std::ostringstream& oss);
 
 private:
@@ -16,7 +22,14 @@ private:
 	void InitializeMembers();
 
 private:
-	json m_UserJson;	std::string m_sLogPath;
+	json m_UserJson;	
+	std::string m_sLogPath;
 	std::string m_sLogName;
 	unsigned m_iMinimalDeltaMB;
+	unsigned m_iCriticalCpuLoad;
+	unsigned m_iCriticalDiskSpace;
+	int m_iInternetStatusDelay;
+	int m_iDiskStatusDelay;
+	int m_iCpuLoadDelay;
+
 };

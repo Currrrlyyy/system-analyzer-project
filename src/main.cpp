@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "service.h"
 #include "config_parser.h"
+#include "cpu_load_status.h"
+#include "logger.h"
 
 int main(int argc, char* argv[])
 {
@@ -25,6 +27,4 @@ int main(int argc, char* argv[])
 	{
 		std::cout << "Can not run service application as console application" << std::endl;
 	}
-	return 0;
-
 }

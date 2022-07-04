@@ -3,6 +3,9 @@
 
 namespace utils
 {
+    PDH_HQUERY g_CpuQuery;
+    PDH_HCOUNTER g_CpuTotal;
+
     const DWORD g_cServiceConfigBuffer_MaxBytesSize = 8192UL;
 
     // Try to get system user name
@@ -139,5 +142,49 @@ namespace utils
 
         }
     }
+    
+    bool OpenQuery()
+    {
+        PDH_STATUS status;
+        
+        status = PdhOpenQuery(NULL, NULL, &g_CpuQuery);
 
+        if (ERROR_SUCCESS != status)
+        {
+            return false;
+        }
+        
+        status = PdhAddCounter(g_CpuQuery, _TEXT("\\Processor Information(_Total)\\% Processor Time"), NULL, &g_CpuTotal);
+        if (ERROR_SUCCESS != status)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    std::optional<long> CollectQueryData()
+    {
+        int attempts = 3;
+        DWORD dwData;
+        PDH_STATUS status;
+        PDH_FMT_COUNTERVALUE counterVal;
+        do
+        {
+            status = PdhCollectQueryData(g_CpuQuery);
+            Sleep(300);
+            status = PdhCollectQueryData(g_CpuQuery);
+            --attempts;
+        } while (ERROR_SUCCESS != status && attempts != 0);
+
+        if (ERROR_SUCCESS != status)
+        {
+            return std::nullopt;
+        }
+        else
+        {
+            status = PdhGetFormattedCounterValue(g_CpuTotal, PDH_FMT_LONG, &dwData, &counterVal);
+            status = counterVal.CStatus;
+            return counterVal.longValue;
+        }
+    } 
 } // namespace utils

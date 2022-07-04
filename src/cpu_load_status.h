@@ -1,14 +1,14 @@
 #pragma once
+#pragma comment(lib,"pdh.lib")
 
-class CInternetConnectionStatus
+class CCpuLoadStatus
 {
 public:
-	CInternetConnectionStatus(int internetStatusDelay);
+	CCpuLoadStatus(int criticalLoadValue, int cpuLoadDelay);
 
-	~CInternetConnectionStatus();
+	~CCpuLoadStatus();
 
 	void Start();
-	
 	void StopAndWait();
 
 private:
@@ -17,7 +17,8 @@ private:
 private:
 	std::thread m_Thread;
 	std::promise<void> m_StopPromise;
-	std::chrono::seconds m_InternetStatusDelay;
+	int m_iCriticalLoadValue;
+	std::chrono::seconds m_CpuLoadDelay;
 	bool m_bIsRunning;
-	bool m_bLastInternetConnection;
 };
+

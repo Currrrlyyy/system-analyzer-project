@@ -1,10 +1,10 @@
 #Ignore files in project
 
+#Ignore bin folder
+bin/
+
 #Ignore log file
 /log.txt
-
-#ignore everything in bin directory
-bin/
 
 #ignore hidden .vs folder
 .vs/

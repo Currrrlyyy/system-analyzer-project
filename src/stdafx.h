@@ -21,6 +21,9 @@
 	#include <WinInet.h>
 	#include <fileapi.h>
 	#include <lmcons.h>
+	#include "TCHAR.h"
+	#include "pdh.h"
+	#include <iostream>
 #endif // _WIN32
 
 

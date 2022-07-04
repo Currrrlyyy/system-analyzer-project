@@ -4,16 +4,15 @@
 #include "logger.h"
 
 // interval for status check-up 
-static const std::chrono::duration g_cDiskStatus_CheckDelay = std::chrono::minutes(1);
 
 //Convert megabytes to bytes
 static const int g_cCoefBytesToMegaBytes = 1048576;
 
-//Critical space on disk(in %)
-static const int g_cCriticalSpaceDiskPercentage = 10;
 
-CDiskStatus::CDiskStatus(int minimalDeltaMB):
+CDiskStatus::CDiskStatus(int minimalDeltaMB, int criticalSpace, int diskStatusDelay):
     m_iMinimalDeltaMB(minimalDeltaMB),
+    m_iCriticalSpace(criticalSpace),
+    m_DiskStatusDelay(diskStatusDelay),
     m_bIsRunning(false)
 {
     utils::InitDrives(m_DrivesInfo, m_lastDiskSpace);
@@ -56,7 +55,7 @@ void CDiskStatus::Execute(std::future<void> shouldStop)
 
     GetDrivesFullInfo();
 
-    while (shouldStop.wait_for(g_cDiskStatus_CheckDelay) == std::future_status::timeout)
+    while (shouldStop.wait_for(m_DiskStatusDelay) == std::future_status::timeout)
     {  
        UpdateDrivesInfo();
        GetDrivesStatus();
@@ -80,11 +79,7 @@ void CDiskStatus::GetDrivesFullInfo()
            std::string str(logicalDisk.begin(), logicalDisk.end());
            oss << "\n\t >> Logical drive " << str << std::endl;
            oss << "\t\tCapacity: " << std::to_string(space.capacity / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
-           oss << "\t\tFree: " << (space.free / g_cCoefBytesToMegaBytes) << " MB" << std::endl;
-           if ( DriveLowSpace(space) )
-           {
-               oss << "\t\tWarning, low free space on disk(less than " << g_cCriticalSpaceDiskPercentage << "%)";
-           }
+           oss << "\t\tFree: " << (space.free / g_cCoefBytesToMegaBytes) << " MB";
         }
     }
     LOG() << oss.str();
@@ -111,7 +106,7 @@ void CDiskStatus::GetDrivesStatus()
     {
         for (auto& [logicalDisk, space] : logicalDisks)
         {
-            if ( labs( m_lastDiskSpace[logicalDisk] - space.free)  > 10 * g_cCoefBytesToMegaBytes)
+            if ( labs( m_lastDiskSpace[logicalDisk] - space.free)  > m_iCriticalSpace * g_cCoefBytesToMegaBytes)
             {
                 oss << "\nFree space on physical disk #" << std::to_string(physicalDiskNumber) << ", logical drive " << logicalDisk << " has changed";
                 oss << "\tOld value: " << std::to_string(m_lastDiskSpace[logicalDisk] / g_cCoefBytesToMegaBytes) << " MB";
@@ -123,11 +118,4 @@ void CDiskStatus::GetDrivesStatus()
         }
     }
     
-}
-
-bool CDiskStatus::DriveLowSpace(std::filesystem::space_info driveSpace)
-{
-    double capacity = driveSpace.capacity;
-    double freeSpace = driveSpace.free;
-    return (freeSpace * 100 / capacity) < g_cCriticalSpaceDiskPercentage;
 }

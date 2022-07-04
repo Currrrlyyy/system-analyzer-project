@@ -34,6 +34,9 @@
     <ClCompile Include="..\src\win32\service.cpp">
       <Filter>src\win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\cpu_load_status.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\stdafx.h">
@@ -55,6 +58,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\service.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cpu_load_status.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

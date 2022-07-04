@@ -6,7 +6,12 @@
 const static json s_cDefaultJson = {
         {"minimalDiskSpaceDelta", 50U},
         {"logPath", "../"},
-        {"logName", "log.txt"}
+        {"logName", "log.txt"},
+        {"cpuCriticalLoad", 90U},
+        {"diskCriticalSpace", 80U},
+        {"cpuLoadDelay", 30U},
+        {"diskStatusDelay", 60U},
+        {"internetStatusDelay", 60U}
 };
 
 // Names of parameters in config
@@ -14,6 +19,12 @@ const static std::string s_csConfigFileName = "../../../config/config.json";
 const static std::string s_csParamLogPath = "logPath";
 const static std::string s_csParamLogName = "logName";
 const static std::string s_csParamMinimalDelta = "minimalDiskSpaceDelta";
+const static std::string s_csParamCpuCriticalLoad = "cpuCriticalLoad";
+const static std::string s_csParamCpuLoadDelay = "cpuLoadDelay";
+const static std::string s_csParamCriticalDiskSpace = "diskCriticalSpace";
+const static std::string s_csParamDiskStatusDelay = "diskStatusDelay";
+const static std::string s_csParamInternetStatusDelay = "internetStatusDelay";
+
 
 
 CConfigParser::CConfigParser()
@@ -34,6 +45,31 @@ std::string CConfigParser::GetLogPath()
 std::string CConfigParser::GetLogName()
 {
     return m_sLogName;
+}
+
+int CConfigParser::GetCriticalCpuLoad()
+{
+    return m_iCriticalCpuLoad;
+}
+
+int CConfigParser::GetCriticalDiskSpace()
+{
+    return m_iCriticalCpuLoad;
+}
+
+int CConfigParser::GetDiskStatusDelay()
+{
+    return m_iDiskStatusDelay;
+}
+
+int CConfigParser::GetCpuLoadDelay()
+{
+    return m_iCpuLoadDelay;
+}
+
+int CConfigParser::GetInternetStatusDelay()
+{
+    return m_iInternetStatusDelay;
 }
 
 //Parse config file and logs parse procees info
@@ -62,7 +98,7 @@ void CConfigParser::ParseConfigFile(std::ostringstream& oss)
         return;
     }
 
-    // Try to parse  user config
+    // Try to parse user config
     try
     {
         oss << " >> Trying to parse user config.\n";
@@ -92,6 +128,11 @@ void CConfigParser::ParseConfigFile(std::ostringstream& oss)
     oss << "\tMinimal disk space delta in MB: " << GetMinimalDeltaMB() << "\n";
     oss << "\tLog file path: '" << GetLogPath() << "'" << "\n";
     oss << "\tLog file name: '" << GetLogName() << "'" << "\n";
+    oss << "\tCritical CPU Load: " << GetCriticalCpuLoad() << "\n";
+    oss << "\tCritical disk space: " << GetCriticalDiskSpace() << "\n";
+    oss << "\tCpu load status delay: " << GetCpuLoadDelay() << "\n";
+    oss << "\tDisk status delay: " << GetDiskStatusDelay() << "\n";
+    oss << "\tInternet status delay: " << GetInternetStatusDelay() << "\n";
 }
 
 // Check if information in user config is valid
@@ -140,4 +181,11 @@ void CConfigParser::InitializeMembers()
     m_sLogPath = (m_UserJson.contains(s_csParamLogPath)) ? m_UserJson[s_csParamLogPath] : s_cDefaultJson[s_csParamLogPath];
     m_sLogName = (m_UserJson.contains(s_csParamLogName)) ? m_UserJson[s_csParamLogName] : s_cDefaultJson[s_csParamLogName];
     m_iMinimalDeltaMB = (m_UserJson.contains(s_csParamMinimalDelta)) ? m_UserJson[s_csParamMinimalDelta] : s_cDefaultJson[s_csParamMinimalDelta];
+    m_iCriticalCpuLoad = (m_UserJson.contains(s_csParamCpuCriticalLoad)) ? m_UserJson[s_csParamCpuCriticalLoad] : s_cDefaultJson[s_csParamCpuCriticalLoad];
+    m_iCriticalDiskSpace = (m_UserJson.contains(s_csParamCriticalDiskSpace)) ? m_UserJson[s_csParamCriticalDiskSpace] : s_cDefaultJson[s_csParamCriticalDiskSpace];
+    m_iCpuLoadDelay = (m_UserJson.contains(s_csParamCpuLoadDelay)) ? m_UserJson[s_csParamCpuLoadDelay] : s_cDefaultJson[s_csParamCpuLoadDelay];
+    m_iDiskStatusDelay = (m_UserJson.contains(s_csParamDiskStatusDelay)) ? m_UserJson[s_csParamDiskStatusDelay] : s_cDefaultJson[s_csParamDiskStatusDelay];
+    m_iInternetStatusDelay = (m_UserJson.contains(s_csParamInternetStatusDelay)) ? m_UserJson[s_csParamInternetStatusDelay] : s_cDefaultJson[s_csParamInternetStatusDelay];
+
+
 }
