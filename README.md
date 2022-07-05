@@ -89,8 +89,8 @@ Currently, config.json contains following parameters:
 Log file contains info about service work. Service writes information about reading config files and system status. Log file can be deleted.
 
 ### **Possible errors:**
-If service can't get user name, it will log empty brackets [] instead of user name 
-If service can't get system time, it will log empty brackets [] instead of system time 
+- If service can't get user name, it will log empty brackets [] instead of user name   
+- If service can't get system time, it will log empty brackets [] instead of system time 
 
 
 
