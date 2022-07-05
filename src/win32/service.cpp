@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "logger.h"
 #include "config_parser.h"
+#include "abstract_thread.h"
 #include "internet_connection_status.h"
 #include "disk_status.h"
 #include "cpu_load_status.h"

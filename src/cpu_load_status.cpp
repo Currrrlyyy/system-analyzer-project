@@ -1,58 +1,26 @@
 #include "stdafx.h"
 #include "utils.h"
 #include "logger.h"
+#include "abstract_thread.h"
 #include "cpu_load_status.h"
 
-// interval for status check-up 
 
 
 CCpuLoadStatus::CCpuLoadStatus(int criticalLoadValue, int cpuLoadDelay):
-    m_bIsRunning(false),
-    m_CpuLoadDelay(cpuLoadDelay),
+    BaseThread(cpuLoadDelay),
     m_iCriticalLoadValue(criticalLoadValue)
 {
 }
 
-CCpuLoadStatus::~CCpuLoadStatus()
-{
-    StopAndWait();
-}
-
-// Start service
-void CCpuLoadStatus::Start()
-{
-    if (m_bIsRunning)
-    {
-        return;
-    }
-    m_bIsRunning = true;
-    m_StopPromise = std::promise<void>();
-    // Execute service in a new thread
-    m_Thread = std::thread(&CCpuLoadStatus::Execute, this, m_StopPromise.get_future());
-}
-
-// Stop service and wait for thread to finish the job
-void CCpuLoadStatus::StopAndWait()
-{
-    if (!m_bIsRunning)
-    {
-        return;
-    }
-    m_StopPromise.set_value();
-    m_Thread.join();
-    m_bIsRunning = false;
-}
-
-//Execute service to check disks space status
 void CCpuLoadStatus::Execute(std::future<void> shouldStop)
 {
 
-    std::cout << "\n >> CCpuLoadStatus started";
+    LOG() << "\n >> CCpuLoadStatus started";
     int attempts = 3;
     bool initSuccess = false;
     long lastCpuLoadValue = 0;
    
-    while (shouldStop.wait_for(m_CpuLoadDelay) == std::future_status::timeout)
+    while (shouldStop.wait_for(m_RepeatDelay) == std::future_status::timeout)
     {
         std::ostringstream oss;
         do

@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "utils.h"
-#include "disk_status.h"
 #include "logger.h"
-
+#include "abstract_thread.h"
+#include "disk_status.h"
 // interval for status check-up 
 
 //Convert megabytes to bytes
@@ -10,42 +10,10 @@ static const int g_cCoefBytesToMegaBytes = 1048576;
 
 
 CDiskStatus::CDiskStatus(int minimalDeltaMB, int criticalSpace, int diskStatusDelay):
+    BaseThread(diskStatusDelay),
     m_iMinimalDeltaMB(minimalDeltaMB),
-    m_iCriticalSpace(criticalSpace),
-    m_DiskStatusDelay(diskStatusDelay),
-    m_bIsRunning(false)
-{
-    utils::InitDrives(m_DrivesInfo, m_lastDiskSpace);
-}
-
-CDiskStatus::~CDiskStatus()
-{
-    StopAndWait();
-}
-
-// Start service
-void CDiskStatus::Start()
-{
-    if (m_bIsRunning)
-    {
-        return;
-    }
-    m_bIsRunning = true;
-    m_StopPromise = std::promise<void>();
-    // Execute service in a new thread
-    m_Thread = std::thread(&CDiskStatus::Execute, this, m_StopPromise.get_future());
-}
-
-// Stop service and wait for thread to finish the job
-void CDiskStatus::StopAndWait()
-{
-    if (!m_bIsRunning)
-    {
-        return;
-    }
-    m_StopPromise.set_value();
-    m_Thread.join();
-    m_bIsRunning = false;
+    m_iCriticalSpace(criticalSpace)  
+{   
 }
 
 //Execute service to check disks space status
@@ -53,9 +21,11 @@ void CDiskStatus::Execute(std::future<void> shouldStop)
 {
     LOG() << "\n >> CDiskStatus started";
 
+    utils::InitDrives(m_DrivesInfo, m_lastDiskSpace);
+
     GetDrivesFullInfo();
 
-    while (shouldStop.wait_for(m_DiskStatusDelay) == std::future_status::timeout)
+    while (shouldStop.wait_for(m_RepeatDelay) == std::future_status::timeout)
     {  
        UpdateDrivesInfo();
        GetDrivesStatus();
