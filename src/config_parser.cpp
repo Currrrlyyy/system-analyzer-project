@@ -4,11 +4,11 @@
 
 // Default config file parameters
 const static json s_cDefaultJson = {
-        {"minimalDiskSpaceDelta", 50U},
         {"logPath", "../"},
         {"logName", "log.txt"},
+        {"minimalDiskSpaceDelta", 50U},
+        {"diskCriticalSpace", 10U},
         {"cpuCriticalLoad", 90U},
-        {"diskCriticalSpace", 80U},
         {"cpuLoadDelay", 30U},
         {"diskStatusDelay", 60U},
         {"internetStatusDelay", 60U}
