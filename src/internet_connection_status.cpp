@@ -1,45 +1,14 @@
 #include "stdafx.h"
-#include "internet_connection_status.h"
 #include "utils.h"
 #include "logger.h"
+#include "abstract_thread.h"
+#include "internet_connection_status.h"
 
 // interval for status check-up 
-CInternetConnectionStatus::CInternetConnectionStatus(int internetStatusDelay)
-	: m_bIsRunning(false)
-	, m_bLastInternetConnection(false)
-	, m_InternetStatusDelay(internetStatusDelay)
-{
-}
-
-CInternetConnectionStatus::~CInternetConnectionStatus()
-{
-	StopAndWait();
-}
-
-// Service start
-void CInternetConnectionStatus::Start()
-
-{
-	if (m_bIsRunning)
-	{
-		return;
-	}
-	m_bIsRunning = true;
-	m_StopPromise = std::promise<void>();
-	// Execute service in a new thread
-	m_Thread = std::thread(&CInternetConnectionStatus::Execute, this, m_StopPromise.get_future());
-}
-
-// Stop service and wait for thread to finish the job
-void CInternetConnectionStatus::StopAndWait()
-{
-	if (!m_bIsRunning)
-	{
-		return;
-	}
-	m_StopPromise.set_value();
-	m_Thread.join();
-	m_bIsRunning = false;
+CInternetConnectionStatus::CInternetConnectionStatus(int internetStatusDelay): 
+	BaseThread(internetStatusDelay),
+	m_bLastInternetConnection(false)
+{	
 }
 
 //Execute service to check internet connection status
@@ -48,7 +17,7 @@ void CInternetConnectionStatus::Execute(std::future<void> shouldStop)
 	LOG() << "\n >> CInternetConnectionStatus started";
 
 	// Check with certain period
-	while (shouldStop.wait_for(m_InternetStatusDelay) == std::future_status::timeout)
+	while (shouldStop.wait_for(m_RepeatDelay) == std::future_status::timeout)
 	{
 		const bool bInternetConnection = utils::IsConnectedToInternet();
 		if (bInternetConnection != m_bLastInternetConnection)
