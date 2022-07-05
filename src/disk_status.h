@@ -12,7 +12,6 @@ private:
 	void UpdateDrivesInfo();
 	void GetDrivesStatus();
 
-
 private:
 	std::map< int, std::map<std::string, std::filesystem::space_info> > m_DrivesInfo;
 	std::map<std::string, uintmax_t> m_lastDiskSpace;

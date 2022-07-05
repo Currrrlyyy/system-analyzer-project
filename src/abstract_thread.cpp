@@ -20,7 +20,6 @@ void BaseThread::Start()
 	}
 	m_bIsRunning = true;
 	m_StopPromise = std::promise<void>();
-	// Execute service in a new thread
 	m_Thread = std::thread(&BaseThread::Execute, this, m_StopPromise.get_future());
 }
 
