@@ -1,6 +1,6 @@
 #pragma once
 
-class CInternetConnectionStatus : public BaseThread 
+class CInternetConnectionStatus : public CBaseThread
 {
 public:
 	CInternetConnectionStatus(int internetStatusDelay);

@@ -3,9 +3,6 @@
 
 namespace utils
 {
-    PDH_HQUERY g_CpuQuery;
-    PDH_HCOUNTER g_CpuTotal;
-
     const DWORD g_cServiceConfigBuffer_MaxBytesSize = 8192UL;
 
     // Try to get system user name
@@ -80,8 +77,8 @@ namespace utils
     std::optional<int> FindDiskNumber(char* drivesList)
     {
         std::string name;
-        char volumePathName[MAX_PATH];
-        char volumeName[MAX_PATH];
+        char volumePathName[MAX_PATH] = { 0 };
+        char volumeName[MAX_PATH] = { 0 };
         DWORD bufferLength = MAX_PATH;
         BOOL isSuccessful = FALSE;
         LPSTR fileName = drivesList;
@@ -143,48 +140,46 @@ namespace utils
         }
     }
     
-    bool OpenQuery()
+    std::optional<long> GetCpuLoad()
     {
-        PDH_STATUS status;
-        
-        status = PdhOpenQuery(NULL, NULL, &g_CpuQuery);
+        PDH_HQUERY hCpuQuery = { 0 };
+        PDH_HCOUNTER CpuTotal = { 0 };
+        PDH_STATUS status = { 0 };
 
-        if (ERROR_SUCCESS != status)
-        {
-            return false;
-        }
-        
-        status = PdhAddCounter(g_CpuQuery, _TEXT("\\Processor Information(_Total)\\% Processor Time"), NULL, &g_CpuTotal);
-        if (ERROR_SUCCESS != status)
-        {
-            return false;
-        }
-        return true;
-    }
-
-    std::optional<long> CollectQueryData()
-    {
-        int attempts = 3;
-        DWORD dwData;
-        PDH_STATUS status;
-        PDH_FMT_COUNTERVALUE counterVal;
-        do
-        {
-            status = PdhCollectQueryData(g_CpuQuery);
-            Sleep(300);
-            status = PdhCollectQueryData(g_CpuQuery);
-            --attempts;
-        } while (ERROR_SUCCESS != status && attempts != 0);
+        status = PdhOpenQuery(NULL, NULL, &hCpuQuery);
 
         if (ERROR_SUCCESS != status)
         {
             return std::nullopt;
         }
-        else
+
+        status = PdhAddCounter(hCpuQuery, _TEXT("\\Processor Information(_Total)\\% Processor Time"), NULL, &CpuTotal);
+        if (ERROR_SUCCESS != status)
         {
-            status = PdhGetFormattedCounterValue(g_CpuTotal, PDH_FMT_LONG, &dwData, &counterVal);
-            status = counterVal.CStatus;
-            return counterVal.longValue;
+            return std::nullopt;
         }
-    } 
+
+        DWORD dwData;
+        PDH_FMT_COUNTERVALUE counterVal;      
+        status = PdhCollectQueryData(hCpuQuery);
+        Sleep(1000);
+        status = PdhCollectQueryData(hCpuQuery);
+
+        if (ERROR_SUCCESS != status)
+        {
+            return std::nullopt;
+        }
+       
+        PdhGetFormattedCounterValue(CpuTotal, PDH_FMT_LONG, &dwData, &counterVal);
+        status = counterVal.CStatus;
+        if (ERROR_SUCCESS != status)
+        {
+            return std::nullopt;
+        }
+        PdhRemoveCounter(CpuTotal);
+        PdhCloseQuery(hCpuQuery);
+
+        return counterVal.longValue;
+    }
+
 } // namespace utils

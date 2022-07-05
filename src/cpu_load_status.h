@@ -1,7 +1,7 @@
 #pragma once
 #pragma comment(lib,"pdh.lib")
 
-class CCpuLoadStatus: public BaseThread
+class CCpuLoadStatus: public CBaseThread
 {
 public:
 	CCpuLoadStatus(int criticalLoadValue, int cpuLoadDelay);
@@ -13,4 +13,3 @@ private:
 	int m_iCriticalLoadValue;
 
 };
-

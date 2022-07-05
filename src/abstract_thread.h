@@ -1,17 +1,14 @@
 #pragma once
 
-class BaseThread
+class CBaseThread
 {
 public:
 
-	BaseThread(int repeatDelay);
-	~BaseThread();
+	CBaseThread(int repeatDelay);
+	virtual ~CBaseThread();
 
 	void Start();
 	void StopAndWait();
-
-protected:
-	std::chrono::seconds m_RepeatDelay;
 
 private:
 	virtual void Execute(std::future<void> shouldStop) = 0;
@@ -20,5 +17,8 @@ private:
 	std::thread m_Thread;
 	std::promise<void> m_StopPromise;
 	bool m_bIsRunning;
+
+protected:
+	std::chrono::seconds m_RepeatDelay;
 
 };

@@ -14,7 +14,6 @@ namespace utils
 
 	void InitDrives(std::map< int, std::map<std::string, std::filesystem::space_info> >& DrivesInfo, std::map<std::string, uintmax_t>& lastDiskSpace);
 
-	bool OpenQuery();
+	std::optional<long> GetCpuLoad();
 
-	std::optional<long> CollectQueryData();
 } // namespace utils

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "service.h"
 
-
 int main(int argc, char* argv[])
 {
 	if (argc > 1)
@@ -25,4 +24,5 @@ int main(int argc, char* argv[])
 	{
 		std::cout << "Can not run service application as console application" << std::endl;
 	}
+
 }

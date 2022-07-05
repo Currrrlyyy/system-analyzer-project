@@ -36,9 +36,9 @@ CLogger& CLogger::AsLValue()
 // Write system time in log file
 void CLogger::AddTimestamp()
 {
-    auto now = std::chrono::system_clock::now();
-    std::time_t time = std::chrono::system_clock::to_time_t(now);
-    std::tm* tm = std::localtime(&time);
+    const auto now = std::chrono::system_clock::now();
+    const std::time_t time = std::chrono::system_clock::to_time_t(now);
+    const std::tm* tm = std::localtime(&time);
 
     // If couldn't get system time
     if (!tm)

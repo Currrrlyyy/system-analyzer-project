@@ -6,7 +6,7 @@
 
 // interval for status check-up 
 CInternetConnectionStatus::CInternetConnectionStatus(int internetStatusDelay): 
-	BaseThread(internetStatusDelay),
+	CBaseThread(internetStatusDelay),
 	m_bLastInternetConnection(false)
 {	
 }

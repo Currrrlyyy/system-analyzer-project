@@ -1,6 +1,6 @@
 #pragma once
 
-class CDiskStatus : public BaseThread
+class CDiskStatus : public CBaseThread
 {
 public:
 	CDiskStatus(int minimalDeltaMB, int criticalSpace, int diskStatusDelay);

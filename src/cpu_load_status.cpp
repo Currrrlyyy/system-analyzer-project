@@ -7,14 +7,13 @@
 
 
 CCpuLoadStatus::CCpuLoadStatus(int criticalLoadValue, int cpuLoadDelay):
-    BaseThread(cpuLoadDelay),
+    CBaseThread(cpuLoadDelay),
     m_iCriticalLoadValue(criticalLoadValue)
 {
 }
 
 void CCpuLoadStatus::Execute(std::future<void> shouldStop)
 {
-
     LOG() << "\n >> CCpuLoadStatus started";
     int attempts = 3;
     bool initSuccess = false;
@@ -23,26 +22,20 @@ void CCpuLoadStatus::Execute(std::future<void> shouldStop)
     while (shouldStop.wait_for(m_RepeatDelay) == std::future_status::timeout)
     {
         std::ostringstream oss;
-        do
-        {
-            initSuccess = utils::OpenQuery();
-            --attempts;
-        } while (!initSuccess && attempts != 0);
+        std::optional<long> res = utils::GetCpuLoad();
 
-        if(initSuccess)
-        { 
-            std::optional<long> res(utils::CollectQueryData());
-            if(res)
+        if (res)
+        {
+            if (lastCpuLoadValue != *res)
             {
-                if (lastCpuLoadValue != *res)
-                {
-                    oss << "\n >> CPU load changed from " << lastCpuLoadValue << "%"
-                        << " to " << *res << "%";
-                    lastCpuLoadValue = *res;
-                } 
-                if (*res >= m_iCriticalLoadValue)
-                    oss << "\n >> Warning: CPU load is higher than critical value(" << m_iCriticalLoadValue << "%)";
-            }  
+                oss << "\n >> CPU load changed from " << lastCpuLoadValue << "%"
+                    << " to " << *res << "%";
+                lastCpuLoadValue = *res;
+            }
+            if (*res >= m_iCriticalLoadValue)
+            {
+                oss << "\n >> Warning: CPU load is higher than critical value(" << m_iCriticalLoadValue << "%)";
+            }
         }
         else
         {
@@ -52,6 +45,5 @@ void CCpuLoadStatus::Execute(std::future<void> shouldStop)
         oss.clear();
 
     }
-
     LOG() << "\n >> CCpuLoadStatus stopped";
 }

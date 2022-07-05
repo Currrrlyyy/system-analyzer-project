@@ -1,18 +1,18 @@
 #include "stdafx.h"
 #include "abstract_thread.h"
 
-BaseThread::BaseThread(int repeatDelay): 
+CBaseThread::CBaseThread(int repeatDelay): 
 	m_bIsRunning(false),
 	m_RepeatDelay(repeatDelay)
 {
 }
 
-BaseThread::~BaseThread()
+CBaseThread::~CBaseThread()
 {
 	StopAndWait();
 }
 
-void BaseThread::Start()
+void CBaseThread::Start()
 {
 	if (m_bIsRunning)
 	{
@@ -20,10 +20,10 @@ void BaseThread::Start()
 	}
 	m_bIsRunning = true;
 	m_StopPromise = std::promise<void>();
-	m_Thread = std::thread(&BaseThread::Execute, this, m_StopPromise.get_future());
+	m_Thread = std::thread(&CBaseThread::Execute, this, m_StopPromise.get_future());
 }
 
-void BaseThread::StopAndWait()
+void CBaseThread::StopAndWait()
 {
 	if (!m_bIsRunning)
 	{

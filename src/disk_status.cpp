@@ -10,7 +10,7 @@ static const int g_cCoefBytesToMegaBytes = 1048576;
 
 
 CDiskStatus::CDiskStatus(int minimalDeltaMB, int criticalSpace, int diskStatusDelay):
-    BaseThread(diskStatusDelay),
+    CBaseThread(diskStatusDelay),
     m_iMinimalDeltaMB(minimalDeltaMB),
     m_iCriticalSpace(criticalSpace)  
 {   
