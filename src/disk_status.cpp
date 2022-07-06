@@ -3,17 +3,15 @@
 #include "logger.h"
 #include "abstract_thread.h"
 #include "disk_status.h"
-// interval for status check-up 
-
+ 
 //Convert megabytes to bytes
 static const int g_cCoefBytesToMegaBytes = 1048576;
 
-
-CDiskStatus::CDiskStatus(int i_MinimalDeltaMB, int i_CriticalSpace, int i_DiskStatusDelay):
-    CBaseThread(i_DiskStatusDelay),
-    m_iMinimalDeltaMB(i_MinimalDeltaMB),
-    m_iCriticalSpace(i_CriticalSpace)
-{   
+CDiskStatus::CDiskStatus(int iMinimalDeltaMB, int iCriticalSpace, int iDiskStatusDelay):
+    CBaseThread(iMinimalDeltaMB),
+    m_iCriticalSpace(iCriticalSpace),
+    m_iMinimalDeltaMB(iDiskStatusDelay)
+{
 }
 
 //Execute service to check disks space status
@@ -56,7 +54,7 @@ void CDiskStatus::GetDrivesFullInfo()
 
 }
 
-// Update information about space on disks 
+// Update information about space on disks
 void CDiskStatus::UpdateDrivesInfo()
 {
     for (auto& [physicalDiskNumber, logicalDisks] : m_DrivesInfo)
@@ -68,6 +66,14 @@ void CDiskStatus::UpdateDrivesInfo()
     }
 }
 
+bool CDiskStatus::isCriticalSpace(std::filesystem::space_info space)
+{
+    int capacity = space.capacity;
+    int freeSpace = space.free;
+
+    return (freeSpace * 100 / capacity) < m_iCriticalSpace;
+}
+
 // Log if free space on disk has changed
 void CDiskStatus::GetDrivesStatus()
 {
@@ -76,11 +82,15 @@ void CDiskStatus::GetDrivesStatus()
     {
         for (auto& [logicalDisk, space] : logicalDisks)
         {
-            if ( labs( m_lastDiskSpace[logicalDisk] - space.free)  > m_iCriticalSpace * g_cCoefBytesToMegaBytes)
+            if ( labs( m_lastDiskSpace[logicalDisk] - space.free) / g_cCoefBytesToMegaBytes > m_iMinimalDeltaMB )
             {
-                oss << "\nFree space on physical disk #" << std::to_string(physicalDiskNumber) << ", logical drive " << logicalDisk << " has changed";
+                oss << "\n\tFree space on physical disk #" << std::to_string(physicalDiskNumber) << ", logical drive " << logicalDisk << " has changed";
                 oss << "\tOld value: " << std::to_string(m_lastDiskSpace[logicalDisk] / g_cCoefBytesToMegaBytes) << " MB";
                 oss << "\tNew value: " << std::to_string(space.free / g_cCoefBytesToMegaBytes) << " MB";
+                if (isCriticalSpace(space))
+                {
+                    oss << "\n\tWarning: critical value of free space on disk(less than " << m_iCriticalSpace << "%)";
+                }
                 m_lastDiskSpace[logicalDisk] = space.free;
                 LOG() << oss.str();
                 oss.clear();

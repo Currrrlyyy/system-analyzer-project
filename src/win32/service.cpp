@@ -163,25 +163,25 @@ VOID WINAPI ServiceMain(DWORD dwArgc, LPSTR* lpszArgv)
 	CLogger::Init(config.GetLogPath() + config.GetLogName());
 	LOG() << logBuffer.str();
 
-	//CInternetConnectionStatus internetConnectionStatus(config.GetInternetStatusDelay());
+	CInternetConnectionStatus internetConnectionStatus(config.GetInternetStatusDelay());
 	CDiskStatus diskStatus(config.GetMinimalDeltaMB(), config.GetCriticalDiskSpace(), config.GetDiskStatusDelay());
-	//CCpuLoadStatus cpuLoadStatus(config.GetCriticalCpuLoad(), config.GetCpuLoadDelay());
+	CCpuLoadStatus cpuLoadStatus(config.GetCriticalCpuLoad(), config.GetCpuLoadDelay());
 	std::future<void> shouldStop = g_StopPromise.get_future();
 
 	LOG() << "\n >> Start";
 
-	//internetConnectionStatus.Start();
+	internetConnectionStatus.Start();
 	diskStatus.Start();
-	//cpuLoadStatus.Start();
+	cpuLoadStatus.Start();
 	
 
 	SetServiceStatus(SERVICE_RUNNING);
 
 	shouldStop.wait();
 
-	//internetConnectionStatus.StopAndWait();
+	internetConnectionStatus.StopAndWait();
 	diskStatus.StopAndWait();
-	//cpuLoadStatus.StopAndWait();
+	cpuLoadStatus.StopAndWait();
 
 	std::string endSymbolSeq(100, '*');
 	LOG() << "\n >> End\n\n" << endSymbolSeq << "\n";

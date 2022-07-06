@@ -4,12 +4,15 @@ class CDiskStatus : public CBaseThread
 {
 public:
 	CDiskStatus(int iMinimalDeltaMB, int iCriticalSpace, int iDiskStatusDelay);
-
+	bool isCriticalSpace(std::filesystem::space_info space);
+	
 	void GetDrivesFullInfo();
 
 private:
-	void Execute(std::future<void> shouldStop);
+	void Execute(std::future<void> shouldStop) override;
+
 	void UpdateDrivesInfo();
+	
 	void GetDrivesStatus();
 
 private:
