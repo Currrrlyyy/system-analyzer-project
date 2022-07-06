@@ -5,8 +5,8 @@
 #include "internet_connection_status.h"
 
 // interval for status check-up 
-CInternetConnectionStatus::CInternetConnectionStatus(int internetStatusDelay): 
-	CBaseThread(internetStatusDelay),
+CInternetConnectionStatus::CInternetConnectionStatus(int iInternetStatusDelay): 
+	CBaseThread(iInternetStatusDelay),
 	m_bLastInternetConnection(false)
 {	
 }

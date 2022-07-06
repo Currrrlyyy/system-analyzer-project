@@ -3,7 +3,7 @@
 class CInternetConnectionStatus : public CBaseThread
 {
 public:
-	CInternetConnectionStatus(int internetStatusDelay);
+	CInternetConnectionStatus(int iInternetStatusDelay);
 
 private:
 	void Execute(std::future<void> shouldStop);

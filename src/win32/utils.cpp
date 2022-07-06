@@ -1,21 +1,22 @@
 #include "stdafx.h"
 #include "utils.h"
 
+
 namespace utils
 {
-    const DWORD g_cServiceConfigBuffer_MaxBytesSize = 8192UL;
+    static const DWORD g_cServiceConfigBuffer_MaxBytesSize = 8192UL;
 
     // Try to get system user name
     std::optional<std::string> GetAccountName()
     {
-        char szBuffer[UNLEN + 1] = { 0 };
-        DWORD cbBuffer = sizeof(szBuffer);
-        BOOL bRes = GetUserName(szBuffer, &cbBuffer);
-        if (bRes == FALSE)
+        char* buf = nullptr;
+        size_t szBuffer = 0;
+        if (_dupenv_s(&buf, &szBuffer, "USERNAME") == 0 && buf != nullptr)
         {
-            return std::nullopt;
+            return buf;
+            free(buf);
         }
-        return std::string(szBuffer, static_cast<std::size_t>(cbBuffer));
+        return std::nullopt;
     }
 
     // Return path of service .exe file
@@ -43,7 +44,7 @@ namespace utils
             DWORD dwBytesNeeded = 0UL;
             LPQUERY_SERVICE_CONFIG pServiceConfig = (LPQUERY_SERVICE_CONFIG)&serviceConfigBuffer[0];
 
-            if (QueryServiceConfig(schService, pServiceConfig, serviceConfigBuffer.size(), &dwBytesNeeded) == FALSE)
+            if (QueryServiceConfig (schService, pServiceConfig, serviceConfigBuffer.size(), &dwBytesNeeded) == FALSE)
             {
                 break;
             }

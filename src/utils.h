@@ -2,8 +2,6 @@
 
 namespace utils
 {
-	
-
 	std::optional<std::string> GetAccountName();
 
 	std::optional<std::string> GetServiceBinaryPath(const std::string& csServiceName);

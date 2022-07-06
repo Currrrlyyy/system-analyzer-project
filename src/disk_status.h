@@ -3,7 +3,7 @@
 class CDiskStatus : public CBaseThread
 {
 public:
-	CDiskStatus(int minimalDeltaMB, int criticalSpace, int diskStatusDelay);
+	CDiskStatus(int iMinimalDeltaMB, int iCriticalSpace, int iDiskStatusDelay);
 
 	void GetDrivesFullInfo();
 

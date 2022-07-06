@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "abstract_thread.h"
 
-CBaseThread::CBaseThread(int repeatDelay): 
+CBaseThread::CBaseThread(int iRepeatDelay): 
 	m_bIsRunning(false),
-	m_RepeatDelay(repeatDelay)
+	m_RepeatDelay(iRepeatDelay)
 {
 }
 

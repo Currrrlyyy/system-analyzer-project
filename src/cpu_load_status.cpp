@@ -6,9 +6,9 @@
 
 
 
-CCpuLoadStatus::CCpuLoadStatus(int criticalLoadValue, int cpuLoadDelay):
-    CBaseThread(cpuLoadDelay),
-    m_iCriticalLoadValue(criticalLoadValue)
+CCpuLoadStatus::CCpuLoadStatus(int iCriticalLoadValue, int iCpuLoadDelay):
+    CBaseThread(iCpuLoadDelay),
+    m_iCriticalLoadValue(iCriticalLoadValue)
 {
 }
 

@@ -4,7 +4,7 @@
 class CCpuLoadStatus: public CBaseThread
 {
 public:
-	CCpuLoadStatus(int criticalLoadValue, int cpuLoadDelay);
+	CCpuLoadStatus(int CriticalLoadValue, int iCpuLoadDelay);
 
 private:
 	void Execute(std::future<void> shouldStop);
