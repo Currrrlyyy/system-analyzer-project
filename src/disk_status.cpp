@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "utils.h"
 #include "logger.h"
-#include "abstract_thread.h"
+#include "base_thread.h"
 #include "disk_status.h"
  
 //Convert megabytes to bytes

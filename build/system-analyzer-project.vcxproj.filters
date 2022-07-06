@@ -37,7 +37,7 @@
     <ClCompile Include="..\src\cpu_load_status.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\abstract_thread.cpp">
+    <ClCompile Include="..\src\base_thread.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,7 +66,7 @@
     <ClInclude Include="..\src\cpu_load_status.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\abstract_thread.h">
+    <ClInclude Include="..\src\base_thread.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

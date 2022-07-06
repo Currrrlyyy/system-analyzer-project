@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "abstract_thread.h"
+#include "base_thread.h"
 
 CBaseThread::CBaseThread(int iRepeatDelay): 
 	m_bIsRunning(false),

@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\abstract_thread.cpp" />
+    <ClCompile Include="..\src\base_thread.cpp" />
     <ClCompile Include="..\src\config_parser.cpp" />
     <ClCompile Include="..\src\cpu_load_status.cpp" />
     <ClCompile Include="..\src\disk_status.cpp" />
@@ -143,7 +143,7 @@
     <ClCompile Include="..\src\win32\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\abstract_thread.h" />
+    <ClInclude Include="..\src\base_thread.h" />
     <ClInclude Include="..\src\config_parser.h" />
     <ClInclude Include="..\src\cpu_load_status.h" />
     <ClInclude Include="..\src\disk_status.h" />
