@@ -36,14 +36,14 @@ void CCpuLoadStatus::Execute(std::future<void> shouldStop)
             {
                 oss << "\n >> Warning: CPU load is higher than critical value(" << m_iCriticalLoadValue << "%)";
             }
+            LOG() << oss.str();
+            oss.clear();
         }
         else
         {
-            oss << "\n >> Couldn't get CPU load data";
+            LOG() << "\n >> Couldn't get CPU load data";
         }
-        LOG() << oss.str();
-        oss.clear();
-
+      
     }
     LOG() << "\n >> CCpuLoadStatus stopped";
 }

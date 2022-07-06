@@ -54,7 +54,7 @@ int CConfigParser::GetCriticalCpuLoad()
 
 int CConfigParser::GetCriticalDiskSpace()
 {
-    return m_iCriticalCpuLoad;
+    return m_iCriticalDiskSpace;
 }
 
 int CConfigParser::GetDiskStatusDelay()

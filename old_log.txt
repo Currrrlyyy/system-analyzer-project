@@ -1,0 +1,1044 @@
+[2022-07-06 05:53:51] [DESKTOP-DNK7DCD$] 
+ >> User config exists.
+ >> Trying to parse user config.
+ >> Successfully parsed user config.
+ >> Checking for validity of value types in user config.
+
+ >> Service parameters:
+	Minimal disk space delta in MB: 10
+	Log file path: '../../../'
+	Log file name: 'log.txt'
+	Critical CPU Load: 80
+	Critical disk space: 80
+	Cpu load status delay: 30
+	Disk status delay: 60
+	Internet status delay: 60
+
+[2022-07-06 05:53:51] [DESKTOP-DNK7DCD$] 
+ >> Start
+[2022-07-06 05:53:51] [DESKTOP-DNK7DCD$] 
+ >> CDiskStatus started
+[2022-07-06 05:53:51] [DESKTOP-DNK7DCD$] 
+ >> CCpuLoadStatus started
+[2022-07-06 05:53:51] [DESKTOP-DNK7DCD$] 
+ >> CInternetConnectionStatus started
+[2022-07-06 05:53:51] [DESKTOP-DNK7DCD$] 
+ >> Physical disk #0: 
+	 >> Logical drive C:\
+		Capacity: 154998 MB
+		Free: 5297 MB
+	 >> Logical drive E:\
+		Capacity: 321886 MB
+		Free: 48584 MB
+ >> Physical disk #1: 
+	 >> Logical drive D:\
+		Capacity: 476936 MB
+		Free: 211649 MB
+[2022-07-06 05:54:23] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 0% to 19%
+[2022-07-06 05:54:51] [DESKTOP-DNK7DCD$] 
+Free space on physical disk #0, logical drive C:\ has changed	Old value: 5297 MB	New value: 4291 MB
+[2022-07-06 05:54:51] [DESKTOP-DNK7DCD$] 
+ >> Internet connection status changed from 'Offline' to 'Online'
+[2022-07-06 05:54:54] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 19% to 34%
+[2022-07-06 05:55:25] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 34% to 31%
+[2022-07-06 05:55:56] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 31% to 39%
+[2022-07-06 05:56:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 39% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 05:56:59] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 33%
+[2022-07-06 05:57:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 33% to 30%
+[2022-07-06 05:57:51] [DESKTOP-DNK7DCD$] 
+ >> Internet connection status changed from 'Online' to 'Offline'
+[2022-07-06 05:58:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 30% to 90%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 05:58:33] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 90% to 19%
+[2022-07-06 05:58:51] [DESKTOP-DNK7DCD$] 
+ >> Internet connection status changed from 'Offline' to 'Online'
+[2022-07-06 05:59:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 19% to 26%
+[2022-07-06 05:59:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 26% to 31%
+[2022-07-06 06:00:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 31% to 9%
+[2022-07-06 06:00:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 9% to 11%
+[2022-07-06 06:01:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 11% to 17%
+[2022-07-06 06:01:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 17% to 34%
+[2022-07-06 06:02:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 34% to 33%
+[2022-07-06 06:02:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 33% to 8%
+[2022-07-06 06:03:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 8% to 18%
+[2022-07-06 06:03:43] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 18% to 14%
+[2022-07-06 06:04:14] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 14% to 38%
+[2022-07-06 06:04:45] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 38% to 13%
+[2022-07-06 06:05:16] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 13% to 62%
+[2022-07-06 06:05:47] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 7%
+[2022-07-06 06:06:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 7% to 5%
+[2022-07-06 06:06:49] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 5% to 9%
+[2022-07-06 06:07:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 9% to 37%
+[2022-07-06 06:07:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 37% to 99%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 06:08:22] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 99% to 37%
+[2022-07-06 06:08:53] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 37% to 64%
+[2022-07-06 06:09:24] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 29%
+[2022-07-06 06:09:55] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 29% to 58%
+[2022-07-06 06:10:26] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 06:10:51] [DESKTOP-DNK7DCD$] 
+Free space on physical disk #0, logical drive C:\ has changed	Old value: 4291 MB	New value: 4456 MB
+[2022-07-06 06:10:57] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 17%
+[2022-07-06 06:11:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 17% to 93%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 06:11:59] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 93% to 71%
+[2022-07-06 06:12:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 71% to 91%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 06:13:01] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 91% to 37%
+[2022-07-06 06:13:32] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 37% to 6%
+[2022-07-06 06:14:03] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 6% to 13%
+[2022-07-06 06:14:34] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 13% to 58%
+[2022-07-06 06:15:05] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 61%
+[2022-07-06 06:15:36] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 66%
+[2022-07-06 06:16:07] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 62%
+[2022-07-06 06:16:38] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 7%
+[2022-07-06 06:17:09] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 7% to 62%
+[2022-07-06 06:17:40] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 60%
+[2022-07-06 06:18:11] [DESKTOP-DNK7DCD$] 
+[2022-07-06 06:18:42] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 78%
+[2022-07-06 06:43:16] [DESKTOP-DNK7DCD$] 
+ >> Internet connection status changed from 'Online' to 'Offline'
+[2022-07-06 06:43:27] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 78% to 38%
+[2022-07-06 06:43:58] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 38% to 57%
+[2022-07-06 06:44:16] [DESKTOP-DNK7DCD$] 
+ >> Internet connection status changed from 'Offline' to 'Online'
+[2022-07-06 06:44:29] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 57% to 4%
+[2022-07-06 06:45:00] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 4% to 61%
+[2022-07-06 06:45:31] [DESKTOP-DNK7DCD$] 
+[2022-07-06 06:46:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 06:46:33] [DESKTOP-DNK7DCD$] 
+[2022-07-06 06:47:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 06:47:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 59%
+[2022-07-06 06:48:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 60%
+[2022-07-06 06:48:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 68%
+[2022-07-06 06:49:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 64%
+[2022-07-06 06:49:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 06:50:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 59%
+[2022-07-06 06:50:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 58%
+[2022-07-06 06:51:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 60%
+[2022-07-06 06:51:43] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 63%
+[2022-07-06 06:52:14] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 59%
+[2022-07-06 06:52:45] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 60%
+[2022-07-06 06:53:16] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 63%
+[2022-07-06 06:53:47] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 69%
+[2022-07-06 06:54:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 69% to 62%
+[2022-07-06 06:54:49] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 66%
+[2022-07-06 06:55:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 63%
+[2022-07-06 06:55:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 58%
+[2022-07-06 06:56:22] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 63%
+[2022-07-06 06:56:53] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 60%
+[2022-07-06 06:57:24] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 64%
+[2022-07-06 06:57:55] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 56%
+[2022-07-06 06:58:26] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 56% to 59%
+[2022-07-06 06:58:57] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 62%
+[2022-07-06 06:59:28] [DESKTOP-DNK7DCD$] 
+[2022-07-06 06:59:59] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 60%
+[2022-07-06 07:00:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 61%
+[2022-07-06 07:01:01] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 64%
+[2022-07-06 07:01:32] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:02:03] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 63%
+[2022-07-06 07:02:34] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:03:05] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 07:03:36] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:04:07] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 69%
+[2022-07-06 07:04:38] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 69% to 66%
+[2022-07-06 07:05:09] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 65%
+[2022-07-06 07:05:40] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 61%
+[2022-07-06 07:06:11] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 70%
+[2022-07-06 07:06:42] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 70% to 66%
+[2022-07-06 07:07:13] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 64%
+[2022-07-06 07:07:44] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 07:08:15] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:08:46] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:09:17] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 07:09:48] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 66%
+[2022-07-06 07:10:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 63%
+[2022-07-06 07:10:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 65%
+[2022-07-06 07:11:22] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 61%
+[2022-07-06 07:11:53] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 07:12:24] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 07:12:55] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:13:26] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:13:57] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:14:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 60%
+[2022-07-06 07:14:59] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 62%
+[2022-07-06 07:15:30] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:16:01] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 61%
+[2022-07-06 07:16:32] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:17:03] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 65%
+[2022-07-06 07:17:34] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 62%
+[2022-07-06 07:18:05] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:18:36] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:19:07] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 07:19:38] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 58%
+[2022-07-06 07:20:09] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 64%
+[2022-07-06 07:20:40] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 66%
+[2022-07-06 07:21:11] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:21:42] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 61%
+[2022-07-06 07:22:13] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 60%
+[2022-07-06 07:22:44] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 59%
+[2022-07-06 07:23:15] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 63%
+[2022-07-06 07:23:46] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 61%
+[2022-07-06 07:24:17] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 07:24:48] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 07:25:19] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:25:50] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 60%
+[2022-07-06 07:26:21] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 63%
+[2022-07-06 07:26:52] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 60%
+[2022-07-06 07:27:23] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 62%
+[2022-07-06 07:27:54] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 66%
+[2022-07-06 07:28:25] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 63%
+[2022-07-06 07:28:56] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:29:27] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 59%
+[2022-07-06 07:29:58] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 64%
+[2022-07-06 07:30:29] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 65%
+[2022-07-06 07:31:00] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 62%
+[2022-07-06 07:31:31] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 07:32:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 07:32:33] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 07:33:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 68%
+[2022-07-06 07:33:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 65%
+[2022-07-06 07:34:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 61%
+[2022-07-06 07:34:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 66%
+[2022-07-06 07:35:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 58%
+[2022-07-06 07:35:40] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 63%
+[2022-07-06 07:36:11] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 07:36:42] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 07:37:13] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 07:37:44] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 07:38:15] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 61%
+[2022-07-06 07:38:46] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:39:17] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:39:48] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 59%
+[2022-07-06 07:40:19] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 60%
+[2022-07-06 07:40:50] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 61%
+[2022-07-06 07:41:21] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 65%
+[2022-07-06 07:41:52] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 63%
+[2022-07-06 07:42:23] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 61%
+[2022-07-06 07:42:54] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 07:43:25] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 69%
+[2022-07-06 07:43:56] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 69% to 59%
+[2022-07-06 07:44:27] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 66%
+[2022-07-06 07:44:58] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 4%
+[2022-07-06 07:45:29] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 4% to 67%
+[2022-07-06 07:46:00] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 67% to 65%
+[2022-07-06 07:46:31] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 62%
+[2022-07-06 07:47:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 07:47:33] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:48:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 07:48:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 07:49:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 07:49:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 66%
+[2022-07-06 07:50:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 64%
+[2022-07-06 07:50:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 07:51:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 07:51:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 63%
+[2022-07-06 07:52:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 07:52:43] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:53:14] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:53:45] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:54:16] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 07:54:47] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 07:55:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 07:55:49] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:56:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 60%
+[2022-07-06 07:56:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 58%
+[2022-07-06 07:57:22] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 60%
+[2022-07-06 07:57:53] [DESKTOP-DNK7DCD$] 
+[2022-07-06 07:58:24] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 64%
+[2022-07-06 07:58:55] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 61%
+[2022-07-06 07:59:26] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 64%
+[2022-07-06 07:59:57] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 61%
+[2022-07-06 08:00:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 63%
+[2022-07-06 08:00:59] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 08:01:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 61%
+[2022-07-06 08:02:01] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 63%
+[2022-07-06 08:02:32] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 60%
+[2022-07-06 08:03:03] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 68%
+[2022-07-06 08:03:34] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 62%
+[2022-07-06 08:04:05] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 70%
+[2022-07-06 08:04:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 70% to 60%
+[2022-07-06 08:05:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 62%
+[2022-07-06 08:05:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 08:06:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 60%
+[2022-07-06 08:06:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 63%
+[2022-07-06 08:07:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 08:07:43] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 59%
+[2022-07-06 08:08:14] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 65%
+[2022-07-06 08:08:45] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 64%
+[2022-07-06 08:09:16] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 61%
+[2022-07-06 08:09:47] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:10:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 59%
+[2022-07-06 08:10:49] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 66%
+[2022-07-06 08:11:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 61%
+[2022-07-06 08:11:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 63%
+[2022-07-06 08:12:22] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 65%
+[2022-07-06 08:12:53] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 60%
+[2022-07-06 08:13:24] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 62%
+[2022-07-06 08:13:55] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 59%
+[2022-07-06 08:14:26] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 60%
+[2022-07-06 08:14:57] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 64%
+[2022-07-06 08:15:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 08:15:59] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 08:16:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 63%
+[2022-07-06 08:17:01] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:17:32] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:18:03] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 67%
+[2022-07-06 08:18:34] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 67% to 64%
+[2022-07-06 08:19:05] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 66%
+[2022-07-06 08:19:36] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 60%
+[2022-07-06 08:20:07] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 64%
+[2022-07-06 08:20:38] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:21:09] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 60%
+[2022-07-06 08:21:40] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 63%
+[2022-07-06 08:22:11] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:22:42] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 08:23:13] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 61%
+[2022-07-06 08:23:44] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:24:15] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 63%
+[2022-07-06 08:24:46] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 65%
+[2022-07-06 08:25:17] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 63%
+[2022-07-06 08:25:48] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 61%
+[2022-07-06 08:26:19] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 08:26:50] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:27:21] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 08:27:52] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 08:28:23] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 61%
+[2022-07-06 08:28:54] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:29:25] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 63%
+[2022-07-06 08:29:56] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 61%
+[2022-07-06 08:30:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 08:30:59] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 61%
+[2022-07-06 08:31:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 08:32:01] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 08:32:32] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:33:03] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 08:33:34] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 08:34:05] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 76%
+[2022-07-06 08:34:36] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 76% to 61%
+[2022-07-06 08:35:07] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 67%
+[2022-07-06 08:35:38] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 67% to 59%
+[2022-07-06 08:36:09] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 64%
+[2022-07-06 08:36:40] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 60%
+[2022-07-06 08:37:11] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 61%
+[2022-07-06 08:37:42] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 58%
+[2022-07-06 08:38:13] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 59%
+[2022-07-06 08:38:44] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 61%
+[2022-07-06 08:39:15] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 64%
+[2022-07-06 08:39:46] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 59%
+[2022-07-06 08:40:17] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 62%
+[2022-07-06 08:40:48] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 08:41:19] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 60%
+[2022-07-06 08:41:50] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 63%
+[2022-07-06 08:42:21] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 61%
+[2022-07-06 08:42:52] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 60%
+[2022-07-06 08:43:23] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 73%
+[2022-07-06 08:43:54] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 73% to 64%
+[2022-07-06 08:44:25] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 66%
+[2022-07-06 08:44:56] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 64%
+[2022-07-06 08:45:27] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 08:45:58] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 61%
+[2022-07-06 08:46:29] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:47:00] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 64%
+[2022-07-06 08:47:31] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 65%
+[2022-07-06 08:48:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 68%
+[2022-07-06 08:48:33] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 60%
+[2022-07-06 08:49:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 75%
+[2022-07-06 08:49:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 75% to 63%
+[2022-07-06 08:50:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 65%
+[2022-07-06 08:50:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 64%
+[2022-07-06 08:51:08] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:51:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 61%
+[2022-07-06 08:52:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 08:52:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 60%
+[2022-07-06 08:53:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 67%
+[2022-07-06 08:53:43] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 67% to 63%
+[2022-07-06 08:54:14] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 08:54:45] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 66%
+[2022-07-06 08:55:16] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 65%
+[2022-07-06 08:55:47] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 08:56:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 64%
+[2022-07-06 08:56:49] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:57:21] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 08:57:52] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 65%
+[2022-07-06 08:58:23] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 60%
+[2022-07-06 08:58:54] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:59:25] [DESKTOP-DNK7DCD$] 
+[2022-07-06 08:59:56] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 62%
+[2022-07-06 09:00:27] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:00:58] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 09:01:29] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 60%
+[2022-07-06 09:02:00] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 65%
+[2022-07-06 09:02:31] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 59%
+[2022-07-06 09:03:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 63%
+[2022-07-06 09:03:33] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 61%
+[2022-07-06 09:04:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 71%
+[2022-07-06 09:04:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 71% to 69%
+[2022-07-06 09:05:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 69% to 61%
+[2022-07-06 09:05:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 66%
+[2022-07-06 09:06:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 61%
+[2022-07-06 09:06:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 60%
+[2022-07-06 09:07:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 63%
+[2022-07-06 09:07:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 60%
+[2022-07-06 09:08:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 61%
+[2022-07-06 09:08:43] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 63%
+[2022-07-06 09:09:14] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 09:09:45] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 09:10:16] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:10:47] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 61%
+[2022-07-06 09:11:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 63%
+[2022-07-06 09:11:49] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 09:12:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 68%
+[2022-07-06 09:12:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 65%
+[2022-07-06 09:13:22] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 70%
+[2022-07-06 09:13:53] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 70% to 62%
+[2022-07-06 09:14:24] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 09:14:55] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:15:26] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 09:15:57] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 09:16:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 63%
+[2022-07-06 09:16:59] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:17:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 59%
+[2022-07-06 09:18:01] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 64%
+[2022-07-06 09:18:32] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:19:03] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 63%
+[2022-07-06 09:19:34] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 09:20:05] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 70%
+[2022-07-06 09:20:36] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 70% to 67%
+[2022-07-06 09:21:07] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 67% to 63%
+[2022-07-06 09:21:38] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 09:22:09] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 69%
+[2022-07-06 09:22:40] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 69% to 63%
+[2022-07-06 09:23:11] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 60%
+[2022-07-06 09:23:42] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 62%
+[2022-07-06 09:24:13] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 09:24:44] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 63%
+[2022-07-06 09:25:16] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 09:25:47] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 59%
+[2022-07-06 09:26:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 62%
+[2022-07-06 09:26:49] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 09:27:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 60%
+[2022-07-06 09:27:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 63%
+[2022-07-06 09:28:22] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 09:28:53] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 65%
+[2022-07-06 09:29:24] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 67%
+[2022-07-06 09:29:55] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 67% to 62%
+[2022-07-06 09:30:26] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 61%
+[2022-07-06 09:30:57] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 67%
+[2022-07-06 09:31:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 67% to 63%
+[2022-07-06 09:31:59] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:32:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 64%
+[2022-07-06 09:33:01] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 63%
+[2022-07-06 09:33:32] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 09:34:03] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 65%
+[2022-07-06 09:34:34] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:35:05] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 63%
+[2022-07-06 09:35:36] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 59%
+[2022-07-06 09:36:07] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 59% to 67%
+[2022-07-06 09:36:38] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 67% to 63%
+[2022-07-06 09:37:09] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 61%
+[2022-07-06 09:37:40] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 64%
+[2022-07-06 09:38:11] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 60%
+[2022-07-06 09:38:42] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 61%
+[2022-07-06 09:39:13] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 62%
+[2022-07-06 09:39:44] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 66%
+[2022-07-06 09:40:15] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 66% to 62%
+[2022-07-06 09:40:46] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:41:17] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 60%
+[2022-07-06 09:41:48] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 61%
+[2022-07-06 09:42:19] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 60%
+[2022-07-06 09:42:50] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 60% to 62%
+[2022-07-06 09:43:21] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 09:43:52] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 09:44:23] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 68%
+[2022-07-06 09:44:54] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 65%
+[2022-07-06 09:45:25] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 63%
+[2022-07-06 09:45:56] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 62%
+[2022-07-06 09:46:27] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 61%
+[2022-07-06 09:46:58] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 64%
+[2022-07-06 09:47:29] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 62%
+[2022-07-06 09:48:00] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 64%
+[2022-07-06 09:48:31] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 65%
+[2022-07-06 09:49:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 65% to 62%
+[2022-07-06 09:49:33] [DESKTOP-DNK7DCD$] 
+[2022-07-06 09:50:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 62% to 68%
+[2022-07-06 09:50:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 9%
+[2022-07-06 09:51:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 9% to 68%
+[2022-07-06 09:51:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 23%
+[2022-07-06 09:52:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 23% to 41%
+[2022-07-06 09:52:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 41% to 27%
+[2022-07-06 09:53:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 27% to 17%
+[2022-07-06 09:53:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 17% to 37%
+[2022-07-06 09:54:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 37% to 27%
+[2022-07-06 09:54:44] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 27% to 37%
+[2022-07-06 09:55:15] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 37% to 45%
+[2022-07-06 09:55:46] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 45% to 29%
+[2022-07-06 09:56:17] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 29% to 18%
+[2022-07-06 09:56:48] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 18% to 44%
+[2022-07-06 09:57:19] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 44% to 82%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 09:57:50] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 82% to 99%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 09:58:21] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 99% to 45%
+[2022-07-06 09:58:52] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 45% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 09:59:06] [DESKTOP-DNK7DCD$] 
+Free space on physical disk #0, logical drive C:\ has changed	Old value: 4456 MB	New value: 4261 MB
+[2022-07-06 09:59:23] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 85%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 09:59:54] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 85% to 26%
+[2022-07-06 10:00:25] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 26% to 24%
+[2022-07-06 10:00:56] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 24% to 58%
+[2022-07-06 10:01:27] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 58% to 71%
+[2022-07-06 10:01:58] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 71% to 97%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:02:29] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 97% to 94%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:03:00] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 94% to 96%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:03:31] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 96% to 18%
+[2022-07-06 10:04:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 18% to 69%
+[2022-07-06 10:04:33] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 69% to 30%
+[2022-07-06 10:05:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 30% to 22%
+[2022-07-06 10:05:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 22% to 68%
+[2022-07-06 10:06:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 68% to 79%
+[2022-07-06 10:06:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 79% to 23%
+[2022-07-06 10:07:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 23% to 17%
+[2022-07-06 10:07:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 17% to 9%
+[2022-07-06 10:08:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 9% to 18%
+[2022-07-06 10:08:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 18% to 16%
+[2022-07-06 10:09:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 16% to 61%
+[2022-07-06 10:09:43] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 89%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:10:14] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 89% to 51%
+[2022-07-06 10:10:45] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 51% to 27%
+[2022-07-06 10:11:16] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 27% to 26%
+[2022-07-06 10:11:47] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 26% to 17%
+[2022-07-06 10:12:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 17% to 39%
+[2022-07-06 10:12:49] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 39% to 36%
+[2022-07-06 10:13:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 36% to 43%
+[2022-07-06 10:13:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 43% to 35%
+[2022-07-06 10:14:22] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 35% to 37%
+[2022-07-06 10:14:53] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 37% to 43%
+[2022-07-06 10:15:24] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 43% to 61%
+[2022-07-06 10:15:55] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 61% to 12%
+[2022-07-06 10:16:26] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 12% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:16:57] [DESKTOP-DNK7DCD$] 
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:17:28] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 27%
+[2022-07-06 10:17:59] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 27% to 30%
+[2022-07-06 10:18:30] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 30% to 16%
+[2022-07-06 10:19:01] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 16% to 27%
+[2022-07-06 10:19:32] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 27% to 16%
+[2022-07-06 10:20:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 16% to 25%
+[2022-07-06 10:20:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 25% to 93%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:21:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 93% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:21:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 24%
+[2022-07-06 10:22:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 24% to 20%
+[2022-07-06 10:22:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 20% to 72%
+[2022-07-06 10:23:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 72% to 75%
+[2022-07-06 10:23:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 75% to 32%
+[2022-07-06 10:24:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 32% to 95%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:24:43] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 95% to 94%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:25:14] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 94% to 64%
+[2022-07-06 10:25:45] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 64% to 98%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:26:16] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 98% to 51%
+[2022-07-06 10:26:47] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 51% to 18%
+[2022-07-06 10:27:18] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 18% to 94%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:27:49] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 94% to 19%
+[2022-07-06 10:28:20] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 19% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:28:51] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 63%
+[2022-07-06 10:29:22] [DESKTOP-DNK7DCD$] 
+[2022-07-06 10:29:53] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 63% to 17%
+[2022-07-06 10:30:25] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 17% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:30:56] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 27%
+[2022-07-06 10:31:27] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 27% to 39%
+[2022-07-06 10:31:58] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 39% to 89%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:32:29] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 89% to 29%
+[2022-07-06 10:33:00] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 29% to 57%
+[2022-07-06 10:33:31] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 57% to 93%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:34:02] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 93% to 34%
+[2022-07-06 10:34:33] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 34% to 97%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:35:04] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 97% to 93%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:35:35] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 93% to 91%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:36:06] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 91% to 100%
+ >> Warning: CPU load is higher than critical value(80%)
+[2022-07-06 10:36:37] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 100% to 16%
+[2022-07-06 10:37:08] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 16% to 30%
+[2022-07-06 10:37:39] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 30% to 21%
+[2022-07-06 10:38:10] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 21% to 46%
+[2022-07-06 10:38:41] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 46% to 29%
+[2022-07-06 10:39:09] [DESKTOP-DNK7DCD$] 
+Free space on physical disk #0, logical drive C:\ has changed	Old value: 4261 MB	New value: 3704 MB
+[2022-07-06 10:39:12] [DESKTOP-DNK7DCD$] 
+ >> CPU load changed from 29% to 51%

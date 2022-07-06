@@ -1,10 +1,10 @@
 {
     "minimalDiskSpaceDelta": 10,
-	"cpuCriticalLoad": 20,
-	"cpuLoadDelay": 30,
-	"diskStatusDelay": 60,
+	"cpuCriticalLoad": 80,
+	"cpuLoadDelay": 10,
+	"diskStatusDelay": 10,
 	"diskCriticalSpace": 70,
-	"internetStatusDelay": 60,
+	"internetStatusDelay": 10,
     "logPath": "../../../",
     "logName": "log.txt"
 }
